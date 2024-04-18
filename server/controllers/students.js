@@ -4,7 +4,6 @@ const Student = require ('../models/students');
 async function getAllStudents (req, res) {
   try {
     const students = await Student.findAll();
-    res.send(students);
     res.status(200).json(students); // request succeeded
   } catch (error) {
     console.log(error);
@@ -14,7 +13,8 @@ async function getAllStudents (req, res) {
 
 async function addStudent (req, res) {
   try {
-    const newStudent = await Student.create({});
+    const { firstName, lastName, routeGo, stopGo, routeBack, stopBack, contactPerson1, contactPerson1Phone, contactPerson2, contactPerson2Phone, address, additionalInfo, photo } = req.body; // extract data from the req. body using destructuring assignment
+    const newStudent = await Student.create({ firstName, lastName, routeGo, stopGo, routeBack, stopBack, contactPerson1, contactPerson1Phone, contactPerson2, contactPerson2Phone, address, additionalInfo, photo });
     res.status(201).json(newStudent); // request fulfilled, new resource created.
   } catch (error) {
     console.log('Missing parameters', error);
