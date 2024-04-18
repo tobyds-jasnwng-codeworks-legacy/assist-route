@@ -1,15 +1,17 @@
 'use strict';
-//Creating a server with Express
+
+// Creating a server with Express
 const express = require('express');
 const router = express.Router();
+const studentsController = require('./controllers/students');
 
-router.get('/', (req, res) => {
-    res.send('Assist Route home page')
-  });
+// get all students: GET /students
+router.get('/students', studentsController.getAllStudents);
 
-//get all students: GET /students
-//add new student: POST /students
-//delete student: DELETE /students/id
+// add new student: POST /students
+router.post('/students', studentsController.addStudent);
 
+// delete student: DELETE /students/id
+router.delete('/students', studentsController.deleteStudent);
 
 module.exports = router;
