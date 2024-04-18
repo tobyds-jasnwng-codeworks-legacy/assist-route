@@ -1,0 +1,45 @@
+/* Shared */
+button {
+  background-color: #FFCD58;
+  color: #015382;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+  font-weight: 700;
+}
+/* Navegation Bar */
+nav {
+  background-color: #015382;
+  color: #FFCD58;
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content:space-between
+}
+
+/* Main */
+main {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#routeInfoDisplay {
+  background-color: white;
+  color: #015382;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+#stopsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+#stopsList {
+  display: flex;
+  flex-direction: column;
+}
