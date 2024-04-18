@@ -1,0 +1,11 @@
+{
+  "name": "asist-route",
+  "version": "1.0.0",
+  "description": "Digital helper for a school bus assistant.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
