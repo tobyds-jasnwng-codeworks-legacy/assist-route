@@ -24,6 +24,12 @@ async function addStudent (req, res) {
 
 async function deleteStudent (req, res) {
   try {
+    const studentId = req.params.id;
+    await Student.destroy({
+      where: {
+        id: studentId
+      }
+    })
     res.status(204).send('Deleted');
   } catch (error) {
     console.log(error);
