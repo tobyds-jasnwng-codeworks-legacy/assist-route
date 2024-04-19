@@ -1,18 +1,20 @@
-function RouteInfoDisplay ({routeInfo}) {
+function RouteInfoDisplay ({routeInfo, students}) {
   return (
-    <div id="routeInfoDisplay">
-      <div id="stopsContainer">
+    <div id="routeDisplay">
+      <h3>{routeInfo[0].name}</h3>
+      <div id="routeInfoDisplay">
         <div id="stopsList">
-          <h3>{routeInfo[0].name}</h3>
-          <ul>
-            {routeInfo[0].stops.map((stop) => (
-            <li key={stop.id}>{stop.name}</li>
-            ))}
-          </ul>
+          {routeInfo[0].stops.map((stop) => (
+          <div key={stop.id}>{stop.name}</div>
+          ))}
         </div>
-        <div>Studens per stop</div>
-      </div>
-    </div> 
+        <div>
+          {students.map( (student, id) => (
+            <div key={id}>{student.firstName} {student.lastName}</div>
+          ))}
+        </div>
+      </div> 
+    </div>
   )
 }
 

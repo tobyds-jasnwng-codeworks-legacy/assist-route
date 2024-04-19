@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import RouteInfoDisplay from "./RouteInfoDisplay";
 
-function DropdownListRoutes ({routes}) {
+function DropdownListRoutes ({routes, students}) {
   const [selectedRoute, setSelectedRoute] = useState('');
   const [routeInfo, setRouteInfo] = useState(null);
 
@@ -21,15 +21,15 @@ function DropdownListRoutes ({routes}) {
   }, [selectedRoute, routes]);
 
   return (
-    <div>
-      <select value={selectedRoute} onChange={handleSelectChange}>
+    <div id="routeInfoContainer">
+      <select id="dropdownRoutes" value={selectedRoute} onChange={handleSelectChange}>
         {routes.map( route => (
             <option key={route.id} value={route.name}>
               {route.name}
             </option>
           ))}
       </select>
-      {routeInfo && <RouteInfoDisplay routeInfo={routeInfo}/>}
+      {routeInfo && <RouteInfoDisplay routeInfo={routeInfo} students={students}/>}
     </div>
   )
 }
