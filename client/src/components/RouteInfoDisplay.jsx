@@ -1,7 +1,5 @@
-import { useState } from "react";
 
-function RouteInfoDisplay ({routeInfo, students}) {
-  const [stopStudents, setStopStudents] = useState([]);
+function RouteInfoDisplay ({routeInfo, students, setStopStudents, stopStudents}) {
   
   function handleSelectStop (event) {
     const {value} = event.target;

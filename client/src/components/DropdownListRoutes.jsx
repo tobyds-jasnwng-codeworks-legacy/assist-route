@@ -4,10 +4,12 @@ import RouteInfoDisplay from "./RouteInfoDisplay";
 function DropdownListRoutes ({routes, students}) {
   const [selectedRoute, setSelectedRoute] = useState('');
   const [routeInfo, setRouteInfo] = useState(null);
+  const [stopStudents, setStopStudents] = useState([]);
 
   // Function to set the selected route
   const handleSelectChange = (event) => {
     setSelectedRoute(event.target.value);
+    setStopStudents([]);
   };
 
   // To display info of the selected route in the route info display section
@@ -30,7 +32,7 @@ function DropdownListRoutes ({routes, students}) {
           </option>
         ))}
       </select>
-      {routeInfo && <RouteInfoDisplay routeInfo={routeInfo} students={students}/>}
+      {routeInfo && <RouteInfoDisplay routeInfo={routeInfo} students={students} stopStudents={stopStudents} setStopStudents={setStopStudents}/>}
     </div>
   )
 }
