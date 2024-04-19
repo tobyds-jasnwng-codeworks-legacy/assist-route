@@ -1,15 +1,24 @@
+import { useState } from "react";
+
 function RouteInfoDisplay ({routeInfo, students}) {
+  const [stopStudents, setStopStudents] = useState([]);
+  
+  function handleSelectStop (event) {
+    const {value} = event.target;
+    setStopStudents(students.filter( student => ((student.routeGo === routeInfo[0].name && student.stopGo === value) || ( student.routeBack === routeInfo[0].name && student.stopBack === value))));
+  }
+
   return (
     <div id="routeDisplay">
       <h3>{routeInfo[0].name}</h3>
       <div id="routeInfoDisplay">
         <div id="stopsList">
           {routeInfo[0].stops.map((stop) => (
-          <div key={stop.id}>{stop.name}</div>
+          <button name="See students" type="button" className="stopButton" key={stop.id} onClick={handleSelectStop} value={stop.name}>{stop.name}</button>
           ))}
         </div>
         <div>
-          {students.map( (student, id) => (
+          {stopStudents.map( (student, id) => (
             <div key={id}>{student.firstName} {student.lastName}</div>
           ))}
         </div>

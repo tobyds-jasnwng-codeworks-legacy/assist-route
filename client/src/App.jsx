@@ -22,6 +22,10 @@ function App() {
         {
           id: 3,
           name: "SABADELL Av. Barberà, 414"
+        },
+        {
+          id: 4,
+          name: "Rambla-Gurrea"
         }
       ]
     },
@@ -31,14 +35,18 @@ function App() {
       stops: [
         {
           id: 1,
-          name: "SABADELL Av. Barberà, 414"
+          name: "Rambla-Gurrea"
         },
         {
           id: 2,
-          name: "SABADELL Carretera de Barcelona, 621"
+          name: "SABADELL Av. Barberà, 414"
         },
         {
           id: 3,
+          name: "SABADELL Carretera de Barcelona, 621"
+        },
+        {
+          id: 4,
           name: "BARBERÀ DEL VALLÈS Carretera de Barcelona, 280"
         }
       ]
@@ -54,7 +62,6 @@ function App() {
       setStudents(body.sort((a,b) => {
         return a.firstName.localeCompare(b.firstName);
       }));
-      console.log(students);
     }
     initialStudentsFetch();
   },[])
