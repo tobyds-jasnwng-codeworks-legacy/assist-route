@@ -23,11 +23,12 @@ function DropdownListRoutes ({routes, students}) {
   return (
     <div id="routeInfoContainer">
       <select id="dropdownRoutes" value={selectedRoute} onChange={handleSelectChange}>
+        <option disabled value="">Choose your route...</option>
         {routes.map( route => (
-            <option key={route.id} value={route.name}>
-              {route.name}
-            </option>
-          ))}
+          <option key={route.id} value={route.name}>
+            {route.name}
+          </option>
+        ))}
       </select>
       {routeInfo && <RouteInfoDisplay routeInfo={routeInfo} students={students}/>}
     </div>

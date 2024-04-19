@@ -59,8 +59,13 @@ main {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
-
 #stopsList {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+.stopButton {
+  background-color: #015382;
+  color: white;
+  padding: 5px;
 }
