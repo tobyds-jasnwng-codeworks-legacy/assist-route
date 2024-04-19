@@ -1,70 +1,30 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import routesData from './data/routesData.json';
 import NavBar from './components/NavBar'
 import DropdownListRoutes from './components/DropdownListRoutes'
 
-const studentsUrl = 'http://localhost:3000/students'
+const studentsUrl = 'http://localhost:3000/students'; // URL of the DB with students data
 
 function App() {
-  const [routes, setRoutes] = useState([
-    {
-      id: 1,
-      name: "R5 SABADELL",
-      stops: [
-        {
-          id: 1,
-          name: "BARBERÀ DEL VALLÈS Carretera de Barcelona, 280"
-        },
-        {
-          id: 2,
-          name: "SABADELL Carretera de Barcelona, 621"
-        },
-        {
-          id: 3,
-          name: "SABADELL Av. Barberà, 414"
-        },
-        {
-          id: 4,
-          name: "Rambla-Gurrea"
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: "R5 SABADELL RETURN",
-      stops: [
-        {
-          id: 1,
-          name: "Rambla-Gurrea"
-        },
-        {
-          id: 2,
-          name: "SABADELL Av. Barberà, 414"
-        },
-        {
-          id: 3,
-          name: "SABADELL Carretera de Barcelona, 621"
-        },
-        {
-          id: 4,
-          name: "BARBERÀ DEL VALLÈS Carretera de Barcelona, 280"
-        }
-      ]
-    }
-  ])
+  const [routes, setRoutes] = useState([]); // routes data
+  const [students, setStudents] = useState([]); // students data
   
-  const [students, setStudents] = useState([]);
-
-  useEffect(() => {
-    async function initialStudentsFetch () {
-      const res = await fetch(studentsUrl);
-      const body = await res.json();
-      setStudents(body.sort((a,b) => {
-        return a.firstName.localeCompare(b.firstName);
-      }));
+  // Fetching data on init
+  useEffect( () => {
+    async function initFetchData () {
+      
+      // Fetch students data
+      const studentsResponse = await fetch(studentsUrl);
+      const studentsBody = await studentsResponse.json();
+      const sortedStudentsBody = studentsBody.sort( (a, b) => a.firstName.localeCompare(b.firstName)); // Students are sorted by name in alphabetical order
+      setStudents (sortedStudentsBody);
+      
+      // Set routes data from JSON file
+      setRoutes(routesData);
     }
-    initialStudentsFetch();
-  },[])
+    initFetchData();
+  }, []);
 
   return (
     <>
