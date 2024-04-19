@@ -1,6 +1,36 @@
-function DropdownListRoutes () {
+import { useState, useEffect } from "react"
+import RouteInfoDisplay from "./RouteInfoDisplay";
+
+function DropdownListRoutes ({routes}) {
+  const [selectedRoute, setSelectedRoute] = useState('');
+  const [routeInfo, setRouteInfo] = useState(null);
+
+  // Function to set the selected route
+  const handleSelectChange = (event) => {
+    setSelectedRoute(event.target.value);
+  };
+
+  // To display info of the selected route in the route info display section
+  useEffect(() => {
+    if (selectedRoute) {
+      const selectedRouteInfo = routes.filter( route => route.name === selectedRoute);
+      setRouteInfo(selectedRouteInfo);
+    } else {
+      setRouteInfo(null);
+    }
+  }, [selectedRoute, routes]);
+
   return (
-    <h1>Dropdown list with routes</h1>
+    <div>
+      <select value={selectedRoute} onChange={handleSelectChange}>
+        {routes.map( route => (
+            <option key={route.id} value={route.name}>
+              {route.name}
+            </option>
+          ))}
+      </select>
+      {routeInfo && <RouteInfoDisplay routeInfo={routeInfo}/>}
+    </div>
   )
 }
 
