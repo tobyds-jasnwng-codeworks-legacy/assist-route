@@ -13,6 +13,8 @@ nav {
   color: #FFCD58;
   position: relative;
   padding: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
   display: flex;
   justify-content:space-between
 }
@@ -22,21 +24,40 @@ main {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
-
-#routeInfoDisplay {
-  background-color: white;
-  color: #015382;
-  height: fit-content;
+#routeInfoContainer {
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;  
+  gap: 30px;
 }
-
-#stopsContainer {
+#dropdownRoutes {
+  background-color: #015382;
+  color: #FFCD58;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  width: auto;
+  height: 30px;
+  padding: 5px;
+}
+#routeDisplay {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 20px;
+  border: solid #015382;
+  border-radius: 10px;
+  padding: 20px;
+}
+#routeDisplay h3 {
+  color: #015382;
+}
+#routeInfoDisplay {
+  color: #015382;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
 #stopsList {

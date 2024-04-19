@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "babel-eslint": "^10.1.0",
+    "cors": "^2.8.5",
     "eslint": "^8.57.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.34.1",

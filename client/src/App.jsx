@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import NavBar from './components/NavBar'
 import DropdownListRoutes from './components/DropdownListRoutes'
-import RouteInfoDisplay from './components/RouteInfoDisplay'
+
+const studentsUrl = 'http://localhost:3000/students'
 
 function App() {
   const [routes, setRoutes] = useState([
@@ -42,20 +43,27 @@ function App() {
         }
       ]
     }
-    // useEffect(() => {
-    //   dibujar el componente (una sola vez o cuando se actualice)
-
-    //   return {
-    //     clean PaymentRequestUpdateEvent
-    //   }
-    // }, [routes])
   ])
+  
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    async function initialStudentsFetch () {
+      const res = await fetch(studentsUrl);
+      const body = await res.json();
+      setStudents(body.sort((a,b) => {
+        return a.firstName.localeCompare(b.firstName);
+      }));
+      console.log(students);
+    }
+    initialStudentsFetch();
+  },[])
 
   return (
     <>
       < NavBar />
       <main>
-        <DropdownListRoutes routes={routes} />
+        <DropdownListRoutes routes={routes} students={students}/> 
       </main>
     </>
   )
