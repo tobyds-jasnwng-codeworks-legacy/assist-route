@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react"
-import RouteInfoDisplay from "./RouteInfoDisplay";
+import { useState, useEffect } from "react";
+import RouteInfoDisplay from "../RouteInfoDisplay/RouteInfoDisplay";
+import './DropdownListRoutes.css';
 
 function DropdownListRoutes ({routes, students}) {
   const [selectedRoute, setSelectedRoute] = useState('');
@@ -34,7 +35,7 @@ function DropdownListRoutes ({routes, students}) {
       </select>
       {routeInfo && <RouteInfoDisplay routeInfo={routeInfo} students={students} stopStudents={stopStudents} setStopStudents={setStopStudents}/>}
     </div>
-  )
+  );
 }
 
-export default DropdownListRoutes
+export default DropdownListRoutes;

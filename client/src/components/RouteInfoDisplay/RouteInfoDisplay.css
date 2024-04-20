@@ -1,0 +1,24 @@
+#routeDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: solid #215E82;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  #routeDisplay h3 {
+    color: #215E82;
+  }
+  #routeInfoDisplay {
+    color: #215E82;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .stopButton {
+    background-color: #215E82;
+    color: white;
+    padding: 5px;
+    clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+  }

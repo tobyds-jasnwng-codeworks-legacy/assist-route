@@ -1,11 +1,14 @@
-function AllStudentsList ({students, setStudents}) {
+import './AllStudentsList.css'
+
+function AllStudentsList ({students, onClose, visible}) {
   
   function handleSelectStudent () {
     console.log('Student selected');
-  };
+  }
 
   return (
     <div id="allStudentsListContainer">
+      <span className="close" onClick={onClose} aria-label="Close">&times;</span>
       <button id="addNewStudentButton">Add new student</button>
       <div id="allStudentsList" className="list">
         {students.map( student => (
@@ -16,4 +19,4 @@ function AllStudentsList ({students, setStudents}) {
   );
 }
 
-export default AllStudentsList
+export default AllStudentsList;
