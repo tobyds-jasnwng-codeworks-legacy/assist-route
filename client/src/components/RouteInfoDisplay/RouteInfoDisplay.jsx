@@ -1,3 +1,4 @@
+import './RouteInfoDisplay.css';
 
 function RouteInfoDisplay ({routeInfo, students, setStopStudents, stopStudents}) {
   

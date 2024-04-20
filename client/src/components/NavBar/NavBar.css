@@ -1,0 +1,10 @@
+nav {
+    background-color: #215E82;
+    color: #FFC94C;
+    position: relative;
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    justify-content:space-between
+  }
