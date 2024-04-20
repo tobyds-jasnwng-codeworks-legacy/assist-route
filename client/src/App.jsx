@@ -3,6 +3,7 @@ import './App.css'
 import routesData from './data/routesData.json';
 import NavBar from './components/NavBar'
 import DropdownListRoutes from './components/DropdownListRoutes'
+import AllStudentsList from './components/AllStudentsList';
 
 const studentsUrl = 'http://localhost:3000/students'; // URL of the DB with students data
 
@@ -28,7 +29,7 @@ function App() {
 
   return (
     <>
-      < NavBar />
+      < NavBar students={students} setStudents={setStudents}/>
       <main>
         <DropdownListRoutes routes={routes} students={students}/> 
       </main>

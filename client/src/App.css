@@ -1,16 +1,23 @@
 /* Shared */
 button {
-  background-color: #FFCD58;
-  color: #015382;
+  background-color: #FFC94C;
+  color: #215E82;
   border: none;
   border-radius: 3px;
   padding: 5px;
   font-weight: 700;
+  cursor: pointer;
 }
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 /* Navegation Bar */
 nav {
-  background-color: #015382;
-  color: #FFCD58;
+  background-color: #215E82;
+  color: #FFC94C;
   position: relative;
   padding: 20px;
   padding-left: 40px;
@@ -32,8 +39,8 @@ main {
   gap: 30px;
 }
 #dropdownRoutes {
-  background-color: #015382;
-  color: #FFCD58;
+  background-color: #215E82;
+  color: #FFC94C;
   border: none;
   border-radius: 5px;
   outline: none;
@@ -45,27 +52,50 @@ main {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border: solid #015382;
+  border: solid #215E82;
   border-radius: 10px;
   padding: 20px;
 }
 #routeDisplay h3 {
-  color: #015382;
+  color: #215E82;
 }
 #routeInfoDisplay {
-  color: #015382;
+  color: #215E82;
   height: fit-content;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
-#stopsList {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 .stopButton {
-  background-color: #015382;
+  background-color: #215E82;
   color: white;
   padding: 5px;
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
 }
+
+/* List of all students */
+#allStudentsListContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #215E82;
+  border: none;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+}
+#addNewStudentButton {
+  width: fit-content;
+}
+#allStudentsList {
+  
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+}
+.studentButton {
+  background-color: white;
+  color: #215E82;
+  padding: 5px;
+}
+
