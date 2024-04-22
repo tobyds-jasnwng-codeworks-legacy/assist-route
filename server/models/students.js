@@ -12,16 +12,16 @@ const Student = sequelize.define('Student', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  routeGo: {
+  morningRoute: {
     type: DataTypes.STRING
   },
-  stopGo: {
+  morningStop: {
     type: DataTypes.STRING
   },
-  routeBack: {
+  eveningRoute: {
     type: DataTypes.STRING
   },
-  stopBack: {
+  eveningStop: {
     type: DataTypes.STRING
   },
   contactPerson1: {
