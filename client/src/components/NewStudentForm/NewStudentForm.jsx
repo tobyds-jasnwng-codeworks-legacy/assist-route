@@ -22,8 +22,12 @@ function NewStudentForm ({ onClose, students, setStudents }) {
     e.preventDefault();
 
     // Validation of mandatory fields
-    if (!formData.firstName || !formData.lastName || (formData.morningRoute && !formData.morningStop) || (formData.eveningRoute && !formData.eveningStop)) {
+    if (!formData.firstName || !formData.lastName || !formData.contactPerson1 || !formData.contactPerson1Phone) {
       alert('Fields marked with * must be fulfilled.');
+    } else if (!formData.morningRoute && !formData.eveningRoute) {
+      alert('At least one route should be selected.');
+    } else if ((formData.morningRoute && !formData.morningStop) || (formData.eveningRoute && !formData.eveningStop)) {
+      alert('Please, select the stop.');
     }
     
     try {
@@ -48,29 +52,29 @@ function NewStudentForm ({ onClose, students, setStudents }) {
     <div id="newStudentFormContainer">
       <span className="close" onClick={onClose} aria-label="Close">&times;</span>
       <form id="NewStudentForm" className="form" onSubmit={handleSubmit}>
-        <label className="formLabel">Name *</label>
+        <label htmlFor="firstName" className="formLabel">Name *</label>
         <input className="formInput" type="text" name="firstName" value={formData.firstName || ''} placeholder="Insert first name..." onChange={handleChange}></input>
-        <label className="formLabel">Last name *</label>
+        <label htmlFor="lastName" className="formLabel">Last name *</label>
         <input className="formInput" type="text" name="lastName" value={formData.lastName || ''} placeholder="Insert last name..." onChange={handleChange}></input>
-        <label className="formLabel">Morning route</label>
+        <label htmlFor="morningRoute" className="formLabel">Morning route</label>
         <input className="formInput" type="text" name="morningRoute" value={formData.morningRoute || ''} placeholder="Insert morning route if used..." onChange={handleChange}></input>
         {formData.morningRoute && (
           <>
-            <label className="formLabel">Morning stop</label> 
+            <label htmlFor="morningStop" className="formLabel">Morning stop</label> 
             <input className="formInput" type="text" name="morningStop" value={formData.morningStop || ''} placeholder="Insert morning route stop..." onChange={handleChange}></input>
           </>
         )}
-        <label className="formLabel">Evening route</label>
+        <label htmlFor="eveningRoute" className="formLabel">Evening route</label>
         <input className="formInput" type="text" name="eveningRoute" value={formData.eveningRoute || ''} placeholder="Insert evening route if used..." onChange={handleChange}></input>
         {formData.eveningRoute && (
           <>
-            <label className="formLabel">Evening stop</label>
+            <label htmlFor="eveningStop" className="formLabel">Evening stop</label>
             <input className="formInput" type="text" name="eveningStop" value={formData.eveningStop || ''} placeholder="Insert evening route stop..." onChange={handleChange}></input>
           </>
         )}
-        <label className="formLabel">Contact person*</label>
+        <label htmlFor="contactPerson1" className="formLabel">Contact person*</label>
         <input className="formInput" type="text" name="contactPerson1" value={formData.contactPerson1 || ''} placeholder="Insert contact person complete name..." onChange={handleChange}></input>
-        <label className="formLabel">Contact person phone number *</label>
+        <label htmlFor="contactPerson1Phone" className="formLabel">Contact person phone number *</label>
         <input className="formInput" type="text" name="contactPerson1Phone" value={formData.contactPerson1Phone || ''} placeholder="Insert contact person phone number..." onChange={handleChange}></input>
         <button id="SubmitNewStudent" type="submit">SUBMIT</button>
       </form>
