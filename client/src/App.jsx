@@ -43,14 +43,12 @@ function App() {
       < NavBar toggleStudentsList={toggleStudentsList}/>
       <main>
         <DropdownListRoutes routes={routes} students={students}/>
-        {/* If showStudents is true list of all students is displayed and is invisible again after clicking on x */}
         {showStudents && <div className="overlay">
           <AllStudentsList students={students} onClose={() => setShowStudents(false)} onSubmit={() => setShowNewStudentForm(true)} />
         </div>}
         {showNewStudentForm && <div className="overlay">
-          <NewStudentForm showNewStudentForm={showNewStudentForm} onClose={() => setShowNewStudentForm(false)}/>
+          <NewStudentForm setStudents={setStudents} showNewStudentForm={showNewStudentForm} onClose={() => setShowNewStudentForm(false)}/>
         </div>}
-
       </main>
     </>
   );

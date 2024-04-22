@@ -8,7 +8,7 @@ function AllStudentsList ({students, onClose, onSubmit}) {
   }
 
   return (
-    <div id="allStudentsListContainer">
+    <div className="listContainer">
       <span className="close" onClick={onClose} aria-label="Close">&times;</span>
       <button id="addNewStudentButton" onClick={() => { onClose(); onSubmit();}}>Add new student</button>
       <div id="allStudentsList" className="list">
