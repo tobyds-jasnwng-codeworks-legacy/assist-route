@@ -18,6 +18,16 @@ button {
   flex-direction: column;
   gap: 10px;
 }
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #215E82;
+  padding: 20px;
+  width: fit-content;
+}
 
 
 

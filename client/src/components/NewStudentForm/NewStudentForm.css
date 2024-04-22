@@ -1,0 +1,27 @@
+#newStudentFormContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 20px;
+    background-color: #215E82;
+    border: none;
+    border-radius: 10px;
+    /* margin: 20px; */
+    padding: 20px;
+}
+.formInput {
+    border: none;
+    border-radius: 2px;
+    padding: 2px;
+}
+#NewStudentForm {
+    border: solid #c8e4f9 3px;
+    border-radius: 10px;
+    margin: 40px;
+    width: 400px;
+}
+#SubmitNewStudent {
+    margin-top: 20px;
+    border-radius: 40px;
+}

@@ -4,6 +4,7 @@ import routesData from './data/routesData.json';
 import NavBar from './components/NavBar/NavBar'
 import DropdownListRoutes from './components/DropdownListRoutes/DropdownListRoutes'
 import AllStudentsList from './components/AllStudentsList/AllStudentsList';
+import NewStudentForm from './components/NewStudentForm/NewStudentForm';
 
 const studentsUrl = 'http://localhost:3000/students'; // URL of the DB with students data
 
@@ -11,6 +12,7 @@ function App() {
   const [routes, setRoutes] = useState([]); // routes data
   const [students, setStudents] = useState([]); // students data
   const [showStudents, setShowStudents] = useState(false); // condition to show the list of students on button click
+  const [showNewStudentForm, setShowNewStudentForm ] = useState(false); // condition to show the form for adding new student on button click
 
   // Fetching data on init
   useEffect( () => {
@@ -43,8 +45,12 @@ function App() {
         <DropdownListRoutes routes={routes} students={students}/>
         {/* If showStudents is true list of all students is displayed and is invisible again after clicking on x */}
         {showStudents && <div className="overlay">
-          <AllStudentsList students={students} onClose={() => setShowStudents(false)} />
+          <AllStudentsList students={students} onClose={() => setShowStudents(false)} onSubmit={() => setShowNewStudentForm(true)} />
         </div>}
+        {showNewStudentForm && <div className="overlay">
+          <NewStudentForm showNewStudentForm={showNewStudentForm} onClose={() => setShowNewStudentForm(false)}/>
+        </div>}
+
       </main>
     </>
   );
