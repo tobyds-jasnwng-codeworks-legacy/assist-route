@@ -5,6 +5,7 @@ import NavBar from './components/NavBar/NavBar'
 import DropdownListRoutes from './components/DropdownListRoutes/DropdownListRoutes'
 import AllStudentsList from './components/AllStudentsList/AllStudentsList';
 import NewStudentForm from './components/NewStudentForm/NewStudentForm';
+import StudentCard from './components/StudentCard/StudentCard';
 
 const studentsUrl = 'http://localhost:3000/students'; // URL of the DB with students data
 
@@ -13,6 +14,7 @@ function App() {
   const [students, setStudents] = useState([]); // students data
   const [showStudents, setShowStudents] = useState(false); // condition to show the list of students on button click
   const [showNewStudentForm, setShowNewStudentForm ] = useState(false); // condition to show the form for adding new student on button click
+  
 
   // Fetching data on init
   useEffect( () => {
@@ -47,8 +49,9 @@ function App() {
           <AllStudentsList students={students} onClose={() => setShowStudents(false)} onSubmit={() => setShowNewStudentForm(true)} />
         </div>}
         {showNewStudentForm && <div className="overlay">
-          <NewStudentForm setStudents={setStudents} showNewStudentForm={showNewStudentForm} onClose={() => setShowNewStudentForm(false)}/>
+          <NewStudentForm routes={routes} students={students} setStudents={setStudents} showNewStudentForm={showNewStudentForm} onClose={() => setShowNewStudentForm(false)}/>
         </div>}
+
       </main>
     </>
   );

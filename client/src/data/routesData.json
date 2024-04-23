@@ -1,5 +1,6 @@
 [{
     "id": "1",
+    "type": "morning",
     "name": "R5 SABADELL",
     "stops": [
       {
@@ -19,14 +20,15 @@
         "name": "SABADELL Rambla-Gurrea"
       },
       {
-        "id": "4",
+        "id": "5",
         "name": "SANT QUIRZE Avd. Camí del Mas"
       }
     ]
   },
   {
     "id": "2",
-    "name": "R5 SABADELL RETURN",
+    "type": "evening",
+    "name": "R5 SABADELL",
     "stops": [
       {
         "id": "1",
@@ -48,6 +50,7 @@
   },
   {
     "id": "3",
+    "type": "morning",
     "name": "R2 SANT CUGAT",
     "stops": [
       {
@@ -70,7 +73,8 @@
   },
   {
     "id": "4",
-    "name": "R2 SANT CUGAT RETURN",
+    "type": "evening",
+    "name": "R2 SANT CUGAT",
     "stops": [
       {
         "id": "1",
