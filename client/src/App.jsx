@@ -45,15 +45,15 @@ function App() {
     <>
       < NavBar toggleStudentsList={toggleStudentsList}/>
       <main>
-        <DropdownListRoutes routes={routes} students={students}/>
+        <DropdownListRoutes routes={routes} students={students} setSelectedStudent={setSelectedStudent} setShowStudentCard={setShowStudentCard} onClose={() => setShowStudentCard(false)}/>
         {showStudents && <div className="overlay">
           <AllStudentsList students={students} setSelectedStudent={setSelectedStudent} setShowStudentCard={setShowStudentCard} onClose={() => setShowStudents(false)} onSubmit={() => setShowNewStudentForm(true)} />
         </div>}
         {showNewStudentForm && <div className="overlay">
-          <NewStudentForm routes={routes} students={students} setStudents={setStudents} showNewStudentForm={showNewStudentForm} onClose={() => setShowNewStudentForm(false)}/>
+          <NewStudentForm routes={routes} setStudents={setStudents} students={students} showNewStudentForm={showNewStudentForm} onClose={() => setShowNewStudentForm(false)}/>
         </div>}
         {showStudentCard && <div className="overlay">
-          <StudentCard students={students} selectedStudent={selectedStudent} onClose={() => setShowStudentCard(false)} />
+          <StudentCard students={students} selectedStudent={selectedStudent} setStudents={setStudents} onClose={() => setShowStudentCard(false)} />
         </div>}
       </main>
     </>

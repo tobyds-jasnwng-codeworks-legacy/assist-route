@@ -1,10 +1,9 @@
 import './StudentCard.css';
 
-function StudentCard ({ students, selectedStudent, onClose}) {
+function StudentCard ({ students, setStudents, selectedStudent, onClose}) {
   const studentData = students.filter( student => student.id === parseInt(selectedStudent))[0];
   const dataToRender = Object.entries(studentData);
-  const dataToRenderShort = dataToRender.slice(1, dataToRender.length - 3);
-  console.log(dataToRenderShort);
+  const dataToRenderShort = dataToRender.slice(1);
 
   const studentInfoElements = dataToRenderShort.map(([key, value]) => (
     <div key={key} className="studentInfoEl">
@@ -17,13 +16,19 @@ function StudentCard ({ students, selectedStudent, onClose}) {
   }
   
   async function handleDelete () {
-    console.log('DELEEETE', studentData.id);
+    
     const res = await fetch('http://localhost:3000/students/'+studentData.id, {
         method: "DELETE",
         mode: "cors"
-    })
+    });
+    // delete student from list
+    setStudents(oldList => {
+        const newList = oldList.filter( item => item.id !== studentData.id );
+        return newList;
+    });
+    onClose();
   }
-  //DELETE STUDENT FROM LIST
+  
 
   return (
     <div className="listContainer">
@@ -34,6 +39,6 @@ function StudentCard ({ students, selectedStudent, onClose}) {
       <button type="button" name="deleteStudentButton" onClick={handleDelete}>DELETE</button>
     </div>
   );
-};
+}
 
 export default StudentCard;
