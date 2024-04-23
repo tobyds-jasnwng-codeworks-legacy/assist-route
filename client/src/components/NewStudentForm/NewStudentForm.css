@@ -1,6 +1,6 @@
 #newStudentFormContainer {
     position: relative;
-    top: 50px;
+    top: 150px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

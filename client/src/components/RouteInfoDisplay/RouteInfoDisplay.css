@@ -22,8 +22,12 @@
   clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
 }
 #stopStudentsList {
-  margin-top: 0;
+  margin-top: 20px;
+  margin-bottom: 0;
   justify-content: flex-start;
   align-items: flex-start;
   color: white;
+}
+.studentIcon {
+  margin-right: 10px;
 }
