@@ -1,8 +1,10 @@
+* {
+  overflow: auto;
+}
 main {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
 }
 button {
   background-color: #FFC94C;
@@ -24,6 +26,7 @@ button {
   border-radius: 10px;
   margin: 20px;
   padding: 20px;
+  overflow: auto;
 }
 .list {
   display: flex;
@@ -55,6 +58,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
   z-index: 999; /* Para que el overlay esté sobre el resto del contenido */
 }
 .close {
