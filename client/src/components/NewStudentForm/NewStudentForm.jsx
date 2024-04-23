@@ -46,7 +46,7 @@ function NewStudentForm ({ routes, onClose, students, setStudents }) {
       })
 
       const newStudent = await res.json();
-      console.log(newStudent);
+
       setStudents([...students, newStudent]/*.sort((a, b) => a.firstName.localeCompare(b.firstName))*/); // Adding new student to the list in an alphabetical order
       onClose();
     } catch (error) {

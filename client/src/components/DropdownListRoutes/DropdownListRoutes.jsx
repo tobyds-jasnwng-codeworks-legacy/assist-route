@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import RouteInfoDisplay from "../RouteInfoDisplay/RouteInfoDisplay";
 import './DropdownListRoutes.css';
 
-function DropdownListRoutes ({routes, students}) {
+function DropdownListRoutes ({routes, students, setSelectedStudent, setShowStudentCard, onClose}) {
   const [selectedRoute, setSelectedRoute] = useState('');
   const [routeInfo, setRouteInfo] = useState(null);
   const [stopStudents, setStopStudents] = useState([]);
@@ -33,7 +33,7 @@ function DropdownListRoutes ({routes, students}) {
           </option>
         ))}
       </select>
-      {routeInfo && <RouteInfoDisplay routeInfo={routeInfo} students={students} stopStudents={stopStudents} setStopStudents={setStopStudents}/>}
+      {routeInfo && <RouteInfoDisplay routeInfo={routeInfo} students={students} stopStudents={stopStudents} setStopStudents={setStopStudents} setSelectedStudent={setSelectedStudent} setShowStudentCard={setShowStudentCard} onClose={onClose}/>}
     </div>
   );
 }

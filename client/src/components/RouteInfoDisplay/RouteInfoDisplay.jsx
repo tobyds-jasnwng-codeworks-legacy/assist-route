@@ -1,11 +1,16 @@
 import './RouteInfoDisplay.css';
 
-function RouteInfoDisplay ({routeInfo, students, setStopStudents, stopStudents}) {
+function RouteInfoDisplay ({routeInfo, students, setStopStudents, stopStudents, setSelectedStudent, setShowStudentCard}) {
   
   function handleSelectStop (event) {
     const {value} = event.target;
     setStopStudents(students.filter( student => ((student.morningRoute === routeInfo[0].name && student.morningStop === value) || ( student.eveningRoute === routeInfo[0].name && student.eveningStop === value))));
-    
+  }
+
+  function handleSelectStudent (e) {
+    const { value } = e.target;
+    setSelectedStudent(value);
+    setShowStudentCard(true);
   }
 
   return (
@@ -22,7 +27,7 @@ function RouteInfoDisplay ({routeInfo, students, setStopStudents, stopStudents})
           <p className="italicThin">Click on the user to see complete information</p>
           <div>
             {stopStudents.map( student => (
-              <button className="studentButton" key={student.id}>{student.firstName} {student.lastName}</button>
+              <button className="studentButton" key={student.id} value={student.id} onClick={(e) => {handleSelectStudent(e)}}>{student.firstName} {student.lastName}</button>
             ))}
           </div>
         </div>
