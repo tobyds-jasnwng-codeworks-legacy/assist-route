@@ -1,5 +1,6 @@
 import './RouteInfoDisplay.css';
 import { TbBusStop } from "react-icons/tb";
+import { PiStudentDuotone } from "react-icons/pi";
 
 function RouteInfoDisplay ({routeInfo, students, setStopStudents, stopStudents, setSelectedStudent, setShowStudentCard}) {
   
@@ -21,14 +22,21 @@ function RouteInfoDisplay ({routeInfo, students, setStopStudents, stopStudents, 
       <div id="routeInfoDisplay">
         <div id="stopsList" className="list">
           {routeInfo[0].stops.map((stop) => (
-            <button name="See students" type="button" className="stopButton" key={stop.id} onClick={handleSelectStop} value={stop.name}>{stop.name}</button>
+            <>
+              <TbBusStop /> 
+              <button name="See students" type="button" className="stopButton" key={stop.id} onClick={handleSelectStop} value={stop.name}>
+                {stop.name}</button>
+            </>
           ))}
         </div>
         <div id="stopStudentsList" className="listContainer">
           <p className="italicThin">Click on the user to see complete information</p>
-          <div>
+          <div className="list">
             {stopStudents.map( student => (
-              <button className="studentButton" key={student.id} value={student.id} onClick={(e) => {handleSelectStudent(e)}}>{student.firstName} {student.lastName}</button>
+              <>
+                <PiStudentDuotone className='studentIcon' />
+                <button className="studentButton" key={student.id} value={student.id} onClick={(e) => {handleSelectStudent(e)}}>{student.firstName} {student.lastName}</button>
+              </>
             ))}
           </div>
         </div>
