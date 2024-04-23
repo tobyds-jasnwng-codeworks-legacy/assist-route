@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './NewStudentForm.css';
+import { AiFillCloseCircle } from "react-icons/ai";
 
 function NewStudentForm ({ routes, onClose, students, setStudents }) {
   const morningRoutes = routes.filter(route => route.type === 'morning');
@@ -56,7 +57,7 @@ function NewStudentForm ({ routes, onClose, students, setStudents }) {
 
   return (
     <div id="newStudentFormContainer">
-      <span className="close" onClick={onClose} aria-label="Close">&times;</span>
+      <AiFillCloseCircle className="close" onClick={onClose} aria-label="Close"/>
       <form id="NewStudentForm" className="form" onSubmit={handleSubmit}>
         <label htmlFor="firstName" className="formLabel">Name *</label>
         <input className="formInput" type="text" name="firstName" value={formData.firstName || ''} placeholder="Insert first name..." onChange={handleChange}></input>
@@ -73,8 +74,15 @@ function NewStudentForm ({ routes, onClose, students, setStudents }) {
         </select>
         {formData.morningRoute && (
           <>
-            <label htmlFor="morningStop" className="formLabel">Morning stop</label> 
-            <input className="formInput" type="text" name="morningStop" value={formData.morningStop || ''} placeholder="Insert morning route stop..." onChange={handleChange}></input>
+            <label htmlFor="morningStop" className="formLabel">Morning stop</label>
+            <select name="morningStop" value={formData.morningStop} onChange={handleChange}>
+              <option disabled value="">Choose morning stop...</option>
+              {morningRoutes.find(route => route.name === formData.morningRoute).stops.map(stop => (
+                <option key={stop.id} value={stop.name}>
+                  {stop.name}
+                </option>
+              ))}
+            </select>
           </>
         )}
         <label htmlFor="eveningRoute" className="formLabel">Evening route</label>
@@ -89,13 +97,26 @@ function NewStudentForm ({ routes, onClose, students, setStudents }) {
         {formData.eveningRoute && (
           <>
             <label htmlFor="eveningStop" className="formLabel">Evening stop</label>
-            <input className="formInput" type="text" name="eveningStop" value={formData.eveningStop || ''} placeholder="Insert evening route stop..." onChange={handleChange}></input>
+            <select name="eveningStop" value={formData.eveningStop} onChange={handleChange}>
+              <option disabled value="">Choose evening stop...</option>
+              {eveningRoutes.find(route => route.name === formData.eveningRoute).stops.map(stop => (
+                <option key={stop.id} value={stop.name}>
+                  {stop.name}
+                </option>
+              ))}
+            </select>
           </>
         )}
         <label htmlFor="contactPerson1" className="formLabel">Contact person*</label>
         <input className="formInput" type="text" name="contactPerson1" value={formData.contactPerson1 || ''} placeholder="Insert contact person complete name..." onChange={handleChange}></input>
         <label htmlFor="contactPerson1Phone" className="formLabel">Contact person phone number *</label>
         <input className="formInput" type="text" name="contactPerson1Phone" value={formData.contactPerson1Phone || ''} placeholder="Insert contact person phone number..." onChange={handleChange}></input>
+        <label htmlFor="contactPerson2" className="formLabel">Second contact person</label>
+        <input className="formInput" type="text" name="contactPerson2" value={formData.contactPerson2 || ''} placeholder="Insert second contact person complete name..." onChange={handleChange}></input>
+        <label htmlFor="contactPerson2Phone" className="formLabel">Second contact person phone number</label>
+        <input className="formInput" type="text" name="contactPerson2Phone" value={formData.contactPerson2Phone || ''} placeholder="Insert contact person phone number..." onChange={handleChange}></input>
+        <label htmlFor="address" className="formLabel">Home address</label>
+        <input className="formInput" type="text" name="address" value={formData.address || ''} placeholder="Insert studen´s home address..." onChange={handleChange}></input>
         <button id="SubmitNewStudent" type="submit">SUBMIT</button>
       </form>
     </div>

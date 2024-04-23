@@ -1,4 +1,5 @@
 import './AllStudentsList.css';
+import { AiFillCloseCircle } from "react-icons/ai";
 
 
 function AllStudentsList ({students, setSelectedStudent, setShowStudentCard, onClose, onSubmit}) {
@@ -11,7 +12,7 @@ function AllStudentsList ({students, setSelectedStudent, setShowStudentCard, onC
 
   return (
     <div className="listContainer">
-      <span className="close" onClick={onClose} aria-label="Close">&times;</span>
+      <AiFillCloseCircle className="close" onClick={onClose} aria-label="Close"/>
       <button id="addNewStudentButton" onClick={() => { onClose(); onSubmit();}}>Add new student</button>
       <div id="allStudentsList" className="list">
         {students.map( student => (

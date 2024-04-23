@@ -1,4 +1,5 @@
 import './StudentCard.css';
+import { AiFillCloseCircle } from "react-icons/ai";
 
 function StudentCard ({ students, setStudents, selectedStudent, onClose}) {
   const studentData = students.filter( student => student.id === parseInt(selectedStudent))[0];
@@ -32,7 +33,7 @@ function StudentCard ({ students, setStudents, selectedStudent, onClose}) {
 
   return (
     <div className="listContainer">
-      <span className="close" onClick={onClose} aria-label="Close">&times;</span>
+      <AiFillCloseCircle className="close" onClick={onClose} aria-label="Close"/>
       <div className="fieldsList">
         {studentInfoElements}
       </div>
