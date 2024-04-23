@@ -14,7 +14,8 @@ function App() {
   const [students, setStudents] = useState([]); // students data
   const [showStudents, setShowStudents] = useState(false); // condition to show the list of students on button click
   const [showNewStudentForm, setShowNewStudentForm ] = useState(false); // condition to show the form for adding new student on button click
-  
+  const [showStudentCard, setShowStudentCard] = useState(false); // condition to show the card with complete information about student
+  const [selectedStudent, setSelectedStudent] = useState('');
 
   // Fetching data on init
   useEffect( () => {
@@ -46,12 +47,14 @@ function App() {
       <main>
         <DropdownListRoutes routes={routes} students={students}/>
         {showStudents && <div className="overlay">
-          <AllStudentsList students={students} onClose={() => setShowStudents(false)} onSubmit={() => setShowNewStudentForm(true)} />
+          <AllStudentsList students={students} setSelectedStudent={setSelectedStudent} setShowStudentCard={setShowStudentCard} onClose={() => setShowStudents(false)} onSubmit={() => setShowNewStudentForm(true)} />
         </div>}
         {showNewStudentForm && <div className="overlay">
           <NewStudentForm routes={routes} students={students} setStudents={setStudents} showNewStudentForm={showNewStudentForm} onClose={() => setShowNewStudentForm(false)}/>
         </div>}
-
+        {showStudentCard && <div className="overlay">
+          <StudentCard students={students} selectedStudent={selectedStudent} onClose={() => setShowStudentCard(false)} />
+        </div>}
       </main>
     </>
   );
