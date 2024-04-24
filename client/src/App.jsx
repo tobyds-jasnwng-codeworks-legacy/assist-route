@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import routesData from './data/routesData.json';
 import NavBar from './components/NavBar/NavBar'
 import DropdownListRoutes from './components/DropdownListRoutes/DropdownListRoutes'
 import AllStudentsList from './components/AllStudentsList/AllStudentsList';
 import NewStudentForm from './components/NewStudentForm/NewStudentForm';
 import StudentCard from './components/StudentCard/StudentCard';
+import { initFetchData } from './Api.service';
 
-const studentsUrl = 'http://localhost:3000/students'; // URL of the DB with students data
+
 
 function App() {
   const [routes, setRoutes] = useState([]); // routes data
@@ -19,21 +19,7 @@ function App() {
 
   // Fetching data on init
   useEffect( () => {
-    async function initFetchData () {
-      try {
-        // Fetch students data
-        const studentsResponse = await fetch(studentsUrl);
-        const studentsBody = await studentsResponse.json();
-        const sortedStudentsBody = studentsBody.sort( (a, b) => a.firstName.localeCompare(b.firstName)); // Students are sorted by name in alphabetical order
-        setStudents (sortedStudentsBody);
-        
-        // Set routes data from JSON file
-        setRoutes(routesData);
-      } catch (error) {
-        console.log('Error fetching data: ', error);
-      } 
-    }
-    initFetchData();
+    initFetchData({setStudents, setRoutes});
   }, []);
 
   // Function to control visibility of the list of all students
