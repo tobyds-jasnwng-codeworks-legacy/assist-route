@@ -1,6 +1,5 @@
 'use strict';
 
-// Creating a server with Express
 const express = require('express');
 const router = express.Router();
 const studentsController = require('./controllers/students');
