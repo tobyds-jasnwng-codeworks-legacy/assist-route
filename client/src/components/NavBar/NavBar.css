@@ -1,12 +1,12 @@
 nav {
-  background-color: #215E82;
-  color: #FFC94C;
+  background-color: #215e82;
+  color: #ffc94c;
   position: relative;
   padding: 15px;
   padding-left: 40px;
   padding-right: 40px;
   display: flex;
-  justify-content:space-between
+  justify-content: space-between;
 }
 #projectName {
   font-size: xx-large;
