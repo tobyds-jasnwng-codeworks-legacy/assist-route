@@ -1,4 +1,4 @@
-import routesData from './data/routesData.json';
+import routesData from '../data/routesData.json';
 
 const studentsUrl = 'http://localhost:3000/students'; // URL of the DB with students data
 
