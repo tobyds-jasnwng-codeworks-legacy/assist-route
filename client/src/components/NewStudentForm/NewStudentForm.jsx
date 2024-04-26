@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './NewStudentForm.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { addStudent } from '../../services/ApiServices';
+
 
 function NewStudentForm({ routes, onClose, students, setStudents }) {
   const morningRoutes = routes.filter((route) => route.type === 'morning');
@@ -44,28 +46,14 @@ function NewStudentForm({ routes, onClose, students, setStudents }) {
       alert('Please, select the stop.');
     }
 
-    try {
-      const res = await fetch('http://localhost:3000/students', {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const newStudent = await res.json();
-
-      setStudents(
-        [
-          ...students,
-          newStudent,
-        ] /*.sort((a, b) => a.firstName.localeCompare(b.firstName))*/
-      ); // Adding new student to the list in an alphabetical order
-      onClose();
-    } catch (error) {
-      console.log('Fetching error:', error);
-    }
+    const newStudent = await addStudent(formData);
+    setStudents(
+      [
+        ...students,
+        newStudent,
+      ] /*.sort((a, b) => a.firstName.localeCompare(b.firstName))*/
+    ); // Adding new student to the list in an alphabetical order
+    onClose();
   }
 
   return (

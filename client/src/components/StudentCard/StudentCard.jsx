@@ -1,5 +1,6 @@
 import './StudentCard.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { deleteStudent } from '../../services/ApiServices';
 
 function StudentCard({ students, setStudents, selectedStudent, onClose }) {
   const studentData = students.filter(
@@ -22,13 +23,8 @@ function StudentCard({ students, setStudents, selectedStudent, onClose }) {
   }
 
   async function handleDelete() {
-    const res = await fetch(
-      'http://localhost:3000/students/' + studentData.id,
-      {
-        method: 'DELETE',
-        mode: 'cors',
-      }
-    );
+    await deleteStudent(studentData.id);
+    
     // delete student from list
     setStudents((oldList) => {
       const newList = oldList.filter((item) => item.id !== studentData.id);
