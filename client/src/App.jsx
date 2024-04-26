@@ -42,7 +42,6 @@ function App() {
           {showStudents && (
             <div className='overlay'>
               <AllStudentsList
-                students={students}
                 setSelectedStudent={setSelectedStudent}
                 setShowStudentCard={setShowStudentCard}
                 onClose={() => setShowStudents(false)}
