@@ -1,9 +1,9 @@
 'use strict';
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('./index');
+const db = require('./index');
 
 // Defining the Student model for Assist Route DB
-const Student = sequelize.define('Student', {
+const Student = db.sequelize.define('Student', {
   firstName: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -52,7 +52,7 @@ const Student = sequelize.define('Student', {
 
 // Synchronize the model with the database
 (async () => {
-  await sequelize.sync().then(() => {
+  await db.sequelize.sync().then(() => {
     console.log('Database & tables created!');
   });
 })();

@@ -1,6 +1,7 @@
 'use strict';
 // Connecting PostgreSQL + Sequelize ORM database
 const { Sequelize } = require('sequelize');
+const db = {}
 
 const sequelize = new Sequelize('assist-route', 'jasonwong', '', {
   host: 'localhost',
@@ -26,4 +27,7 @@ async function connect() {
 }
 connect();
 
-module.exports = { sequelize, Sequelize };
+db.sequelize = sequelize;
+db.Sequelize = Sequelize; 
+
+module.exports = db;
