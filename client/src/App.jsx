@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import DropdownListRoutes from './components/DropdownListRoutes/DropdownListRoutes';
@@ -6,6 +6,8 @@ import AllStudentsList from './components/AllStudentsList/AllStudentsList';
 import NewStudentForm from './components/NewStudentForm/NewStudentForm';
 import StudentCard from './components/StudentCard/StudentCard';
 import { initFetchData } from './services/ApiServices';
+
+const Context = createContext()
 
 function App() {
   const [routes, setRoutes] = useState([]); // routes data
@@ -27,47 +29,49 @@ function App() {
 
   return (
     <>
-      <NavBar toggleStudentsList={toggleStudentsList} />
-      <main>
-        <DropdownListRoutes
-          routes={routes}
-          students={students}
-          setSelectedStudent={setSelectedStudent}
-          setShowStudentCard={setShowStudentCard}
-          onClose={() => setShowStudentCard(false)}
-        />
-        {showStudents && (
-          <div className='overlay'>
-            <AllStudentsList
-              students={students}
-              setSelectedStudent={setSelectedStudent}
-              setShowStudentCard={setShowStudentCard}
-              onClose={() => setShowStudents(false)}
-              onSubmit={() => setShowNewStudentForm(true)}
-            />
-          </div>
-        )}
-        {showNewStudentForm && (
-          <div className='overlay'>
-            <NewStudentForm
-              routes={routes}
-              setStudents={setStudents}
-              students={students}
-              onClose={() => setShowNewStudentForm(false)}
-            />
-          </div>
-        )}
-        {showStudentCard && (
-          <div className='overlay'>
-            <StudentCard
-              students={students}
-              selectedStudent={selectedStudent}
-              setStudents={setStudents}
-              onClose={() => setShowStudentCard(false)}
-            />
-          </div>
-        )}
-      </main>
+    <Context.Provider value={students}>
+        <NavBar toggleStudentsList={toggleStudentsList} />
+        <main>
+          <DropdownListRoutes
+            routes={routes}
+            students={students}
+            setSelectedStudent={setSelectedStudent}
+            setShowStudentCard={setShowStudentCard}
+            onClose={() => setShowStudentCard(false)}
+          />
+          {showStudents && (
+            <div className='overlay'>
+              <AllStudentsList
+                students={students}
+                setSelectedStudent={setSelectedStudent}
+                setShowStudentCard={setShowStudentCard}
+                onClose={() => setShowStudents(false)}
+                onSubmit={() => setShowNewStudentForm(true)}
+              />
+            </div>
+          )}
+          {showNewStudentForm && (
+            <div className='overlay'>
+              <NewStudentForm
+                routes={routes}
+                setStudents={setStudents}
+                students={students}
+                onClose={() => setShowNewStudentForm(false)}
+              />
+            </div>
+          )}
+          {showStudentCard && (
+            <div className='overlay'>
+              <StudentCard
+                students={students}
+                selectedStudent={selectedStudent}
+                setStudents={setStudents}
+                onClose={() => setShowStudentCard(false)}
+              />
+            </div>
+          )}
+        </main>
+      </Context.Provider>
     </>
   );
 }
