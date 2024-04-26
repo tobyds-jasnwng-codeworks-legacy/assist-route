@@ -50,11 +50,5 @@ const Student = db.sequelize.define('Student', {
   },
 });
 
-// Synchronize the model with the database
-(async () => {
-  await db.sequelize.sync().then(() => {
-    console.log('Database & tables created!');
-  });
-})();
 
 module.exports = Student;
