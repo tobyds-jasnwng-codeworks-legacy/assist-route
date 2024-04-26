@@ -18,3 +18,16 @@ export async function initFetchData({ setStudents, setRoutes }) {
     console.log('Error fetching data: ', error);
   }
 }
+
+export async function deleteStudent(id) {
+  return await fetch(
+      'http://localhost:3000/students/' + id,
+      {
+        method: 'DELETE',
+        mode: 'cors',
+      }
+  );
+}
+
+
+

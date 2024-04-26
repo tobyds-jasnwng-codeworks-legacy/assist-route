@@ -5,7 +5,7 @@ import DropdownListRoutes from './components/DropdownListRoutes/DropdownListRout
 import AllStudentsList from './components/AllStudentsList/AllStudentsList';
 import NewStudentForm from './components/NewStudentForm/NewStudentForm';
 import StudentCard from './components/StudentCard/StudentCard';
-import { initFetchData } from './services/Api.service';
+import { initFetchData } from './services/ApiServices';
 
 function App() {
   const [routes, setRoutes] = useState([]); // routes data
