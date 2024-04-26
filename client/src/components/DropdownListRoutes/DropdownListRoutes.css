@@ -1,16 +1,16 @@
 #routeInfoContainer {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  #dropdownRoutes {
-    background-color: #215E82;
-    color: #FFC94C;
-    border: none;
-    border-radius: 5px;
-    outline: none;
-    width: auto;
-    height: 30px;
-    padding: 5px;
-  }
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+#dropdownRoutes {
+  background-color: #215e82;
+  color: #ffc94c;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  width: auto;
+  height: 30px;
+  padding: 5px;
+}

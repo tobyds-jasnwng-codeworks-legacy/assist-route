@@ -7,8 +7,8 @@ main {
   flex-direction: column;
 }
 button {
-  background-color: #FFC94C;
-  color: #215E82;
+  background-color: #ffc94c;
+  color: #215e82;
   border: none;
   border-radius: 3px;
   padding: 5px;
@@ -21,7 +21,7 @@ button {
   justify-content: flex-start;
   align-items: flex-end;
   gap: 20px;
-  background-color: #215E82;
+  background-color: #215e82;
   border: none;
   border-radius: 10px;
   margin: 20px;
@@ -39,13 +39,13 @@ button {
   gap: 10px;
   border: none;
   border-radius: 10px;
-  background-color: #215E82;
+  background-color: #215e82;
   padding: 20px;
   width: fit-content;
 }
 .studentButton {
   background-color: white;
-  color: #215E82;
+  color: #215e82;
   padding: 5px;
 }
 .overlay {
@@ -68,11 +68,3 @@ button {
   font-style: italic;
   font-weight: 100;
 }
-
-
-
-
-
-
-
-
