@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
 import DropdownListRoutes from './components/DropdownListRoutes/DropdownListRoutes';
@@ -7,7 +7,7 @@ import NewStudentForm from './components/NewStudentForm/NewStudentForm';
 import StudentCard from './components/StudentCard/StudentCard';
 import { initFetchData } from './services/ApiServices';
 
-const Context = createContext()
+export const Context = createContext()
 
 function App() {
   const [routes, setRoutes] = useState([]); // routes data
@@ -29,7 +29,7 @@ function App() {
 
   return (
     <>
-    <Context.Provider value={students}>
+    <Context.Provider value={{students}}>
         <NavBar toggleStudentsList={toggleStudentsList} />
         <main>
           <DropdownListRoutes

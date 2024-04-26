@@ -1,14 +1,19 @@
 import './AllStudentsList.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { PiStudentDuotone } from 'react-icons/pi';
+import { useContext } from 'react';
+import { Context } from '../../App'
+
 
 function AllStudentsList({
-  students,
   setSelectedStudent,
   setShowStudentCard,
   onClose,
   onSubmit,
 }) {
+
+  const { students } = useContext(Context);
+
   function handleSelectStudent(e) {
     const { value } = e.target;
     setSelectedStudent(value);
