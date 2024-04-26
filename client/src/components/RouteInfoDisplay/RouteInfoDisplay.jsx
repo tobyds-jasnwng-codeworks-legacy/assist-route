@@ -1,15 +1,20 @@
 import './RouteInfoDisplay.css';
 import { TbBusStop } from 'react-icons/tb';
 import { PiStudentDuotone } from 'react-icons/pi';
+import { useContext } from 'react';
+import { Context } from '../../App'
+
 
 function RouteInfoDisplay({
   routeInfo,
-  students,
   setStopStudents,
   stopStudents,
   setSelectedStudent,
   setShowStudentCard,
 }) {
+
+  const { students } = useContext(Context);
+  
   function handleSelectStop(event) {
     const { value } = event.target;
     setStopStudents(
