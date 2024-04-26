@@ -47,8 +47,7 @@ function NewStudentForm({ routes, onClose, students, setStudents }) {
     }
 
     try {
-      const res = await addStudent(formData);
-      const newStudent = await res.json();
+      const newStudent = await addStudent(formData);
 
       setStudents(
         [

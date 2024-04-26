@@ -30,14 +30,17 @@ export async function deleteStudent(id) {
 }
 
 export async function addStudent(formData) {
-  return await fetch(studentsUrl, {
+  const res = await fetch(studentsUrl, {
         method: 'POST',
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
-      });
+  });
+
+  const newStudent = await res.json();
+  return newStudent;
 }
 
 
