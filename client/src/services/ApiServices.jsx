@@ -29,5 +29,15 @@ export async function deleteStudent(id) {
   );
 }
 
+export async function addStudent(formData) {
+  return await fetch('http://localhost:3000/students', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+}
 
 

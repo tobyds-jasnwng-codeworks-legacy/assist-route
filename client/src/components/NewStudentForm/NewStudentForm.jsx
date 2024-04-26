@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './NewStudentForm.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
+import { addStudent } from '../../services/ApiServices';
+
 
 function NewStudentForm({ routes, onClose, students, setStudents }) {
   const morningRoutes = routes.filter((route) => route.type === 'morning');
@@ -45,15 +47,7 @@ function NewStudentForm({ routes, onClose, students, setStudents }) {
     }
 
     try {
-      const res = await fetch('http://localhost:3000/students', {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
+      const res = await addStudent(formData);
       const newStudent = await res.json();
 
       setStudents(
