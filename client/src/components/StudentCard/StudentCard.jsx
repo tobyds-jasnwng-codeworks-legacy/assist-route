@@ -1,8 +1,13 @@
 import './StudentCard.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { deleteStudent } from '../../services/ApiServices';
+import { useContext } from 'react';
+import { Context } from '../../App'
 
-function StudentCard({ students, setStudents, selectedStudent, onClose }) {
+
+function StudentCard({ setStudents, selectedStudent, onClose }) {
+  const { students } = useContext(Context);
+
   const studentData = students.filter(
     (student) => student.id === parseInt(selectedStudent)
   )[0];
