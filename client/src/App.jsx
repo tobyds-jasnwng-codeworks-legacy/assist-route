@@ -34,7 +34,6 @@ function App() {
         <main>
           <DropdownListRoutes
             routes={routes}
-            students={students}
             setSelectedStudent={setSelectedStudent}
             setShowStudentCard={setShowStudentCard}
             onClose={() => setShowStudentCard(false)}

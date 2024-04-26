@@ -4,7 +4,6 @@ import './DropdownListRoutes.css';
 
 function DropdownListRoutes({
   routes,
-  students,
   setSelectedStudent,
   setShowStudentCard,
   onClose,
@@ -50,7 +49,6 @@ function DropdownListRoutes({
       {routeInfo && (
         <RouteInfoDisplay
           routeInfo={routeInfo}
-          students={students}
           stopStudents={stopStudents}
           setStopStudents={setStopStudents}
           setSelectedStudent={setSelectedStudent}
