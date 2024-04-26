@@ -20,13 +20,18 @@ export async function initFetchData({ setStudents, setRoutes }) {
 }
 
 export async function deleteStudent(id) {
-  return await fetch(
-      studentsUrl + id,
-      {
-        method: 'DELETE',
-        mode: 'cors',
-      }
-  );
+  try {
+    return await fetch(
+        studentsUrl + id,
+        {
+          method: 'DELETE',
+          mode: 'cors',
+        }
+    );
+  } catch (error) {
+    console.log('Error deleting student: ', error);
+    // add return 
+  }
 }
 
 export async function addStudent(formData) {
