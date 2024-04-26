@@ -46,19 +46,14 @@ function NewStudentForm({ routes, onClose, students, setStudents }) {
       alert('Please, select the stop.');
     }
 
-    try {
-      const newStudent = await addStudent(formData);
-
-      setStudents(
-        [
-          ...students,
-          newStudent,
-        ] /*.sort((a, b) => a.firstName.localeCompare(b.firstName))*/
-      ); // Adding new student to the list in an alphabetical order
-      onClose();
-    } catch (error) {
-      console.log('Fetching error:', error);
-    }
+    const newStudent = await addStudent(formData);
+    setStudents(
+      [
+        ...students,
+        newStudent,
+      ] /*.sort((a, b) => a.firstName.localeCompare(b.firstName))*/
+    ); // Adding new student to the list in an alphabetical order
+    onClose();
   }
 
   return (
