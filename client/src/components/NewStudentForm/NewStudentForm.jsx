@@ -2,9 +2,12 @@ import { useState } from 'react';
 import './NewStudentForm.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { addStudent } from '../../services/ApiServices';
+import { useContext } from 'react';
+import { Context } from '../../App'
 
 
-function NewStudentForm({ routes, onClose, students, setStudents }) {
+function NewStudentForm({ routes, onClose, setStudents }) {
+  const { students } = useContext(Context);
   const morningRoutes = routes.filter((route) => route.type === 'morning');
   const eveningRoutes = routes.filter((route) => route.type === 'evening');
 

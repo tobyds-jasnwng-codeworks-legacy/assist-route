@@ -53,7 +53,6 @@ function App() {
               <NewStudentForm
                 routes={routes}
                 setStudents={setStudents}
-                students={students}
                 onClose={() => setShowNewStudentForm(false)}
               />
             </div>
