@@ -2,7 +2,7 @@
 // Connecting PostgreSQL + Sequelize ORM database
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('assist-route', 'yulia', 'password2', {
+const sequelize = new Sequelize('assist-route', 'jasonwong', '', {
   host: 'localhost',
   dialect: 'postgres',
   logging: true, // should be false in production. Cuando logging está configurado en false, Sequelize no mostrará ninguna salida en la consola relacionada con las consultas SQL que se están ejecutando.
