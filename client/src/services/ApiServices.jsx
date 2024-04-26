@@ -1,6 +1,6 @@
 import routesData from '../data/routesData.json';
 
-const studentsUrl = 'http://localhost:3000/students'; // URL of the DB with students data
+const studentsUrl = 'http://localhost:3000/students/'; // URL of the DB with students data
 
 export async function initFetchData({ setStudents, setRoutes }) {
   try {
@@ -21,7 +21,7 @@ export async function initFetchData({ setStudents, setRoutes }) {
 
 export async function deleteStudent(id) {
   return await fetch(
-      'http://localhost:3000/students/' + id,
+      studentsUrl + id,
       {
         method: 'DELETE',
         mode: 'cors',
@@ -30,7 +30,7 @@ export async function deleteStudent(id) {
 }
 
 export async function addStudent(formData) {
-  return await fetch('http://localhost:3000/students', {
+  return await fetch(studentsUrl, {
         method: 'POST',
         mode: 'cors',
         headers: {
