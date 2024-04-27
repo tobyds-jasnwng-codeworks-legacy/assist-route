@@ -1,11 +1,11 @@
 import { useEffect, useState, createContext } from 'react';
 import './App.css';
-import NavBar from './components/NavBar/NavBar';
-import DropdownListRoutes from './components/DropdownListRoutes/DropdownListRoutes';
-import AllStudentsList from './components/AllStudentsList/AllStudentsList';
-import NewStudentForm from './components/NewStudentForm/NewStudentForm';
-import StudentCard from './components/StudentCard/StudentCard';
-import { initFetchData } from './services/ApiServices';
+import NavBar from '@components/NavBar/NavBar';
+import DropdownListRoutes from '@components/DropdownListRoutes/DropdownListRoutes';
+import AllStudentsList from '@components/AllStudentsList/AllStudentsList';
+import NewStudentForm from '@components/NewStudentForm/NewStudentForm';
+import StudentCard from '@components/StudentCard/StudentCard';
+import { initFetchData } from '@services/ApiServices';
 
 export const Context = createContext()
 

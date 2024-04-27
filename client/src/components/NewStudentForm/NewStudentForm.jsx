@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './NewStudentForm.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
-import { addStudent } from '../../services/ApiServices';
+import { addStudent } from '@services/ApiServices';
 import { useContext } from 'react';
 import { Context } from '../../App'
 
