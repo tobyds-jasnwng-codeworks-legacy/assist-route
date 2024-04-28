@@ -50,5 +50,4 @@ const Student = db.sequelize.define('Student', {
   },
 });
 
-
 module.exports = Student;
