@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import RouteInfoDisplay from '../RouteInfoDisplay/RouteInfoDisplay';
 import './DropdownListRoutes.css';
+import PropTypes from 'prop-types';
 
 function DropdownListRoutes ({
   routes,
@@ -13,7 +14,7 @@ function DropdownListRoutes ({
   const [stopStudents, setStopStudents] = useState([]);
 
   // Function to set the selected route
-  const handleSelectChange = (event) => {
+  function handleSelectChange (event) {
     setSelectedRoute(event.target.value);
     setStopStudents([]);
   }
@@ -59,5 +60,24 @@ function DropdownListRoutes ({
     </div>
   );
 }
+
+DropdownListRoutes.propTypes = {
+  routes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      type: PropTypes.string,
+      name: PropTypes.string,
+      stops: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string,
+          name: PropTypes.string,
+        })
+      ),
+    })
+  ),
+  setSelectedStudent: PropTypes.func,
+  setShowStudentCard: PropTypes.func,
+  onClose: PropTypes.func,
+};
 
 export default DropdownListRoutes;

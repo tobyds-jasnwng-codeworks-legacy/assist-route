@@ -5,6 +5,7 @@ import { addStudent } from '@services/ApiServices';
 import { useContext } from 'react';
 import { Context } from '../../App';
 
+import PropTypes from 'prop-types';
 
 function NewStudentForm ({ routes, onClose, setStudents }) {
   const { students } = useContext(Context);
@@ -231,5 +232,23 @@ function NewStudentForm ({ routes, onClose, setStudents }) {
     </div>
   );
 }
+
+NewStudentForm.propTypes = {
+  routes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      type: PropTypes.string,
+      name: PropTypes.string,
+      stops: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string,
+          name: PropTypes.string,
+        })
+      ),
+    })
+  ),
+  onClose: PropTypes.func,
+  setStudents: PropTypes.func,
+};
 
 export default NewStudentForm;

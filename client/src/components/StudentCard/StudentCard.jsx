@@ -52,4 +52,23 @@ function StudentCard ({ setStudents, selectedStudent, onClose }) {
   );
 }
 
+StudentCard.propTypes = {
+  selectedStudent: PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    morningRoute: PropTypes.string,
+    morningStop: PropTypes.string,
+    eveningRoute: PropTypes.string,
+    eveningStop: PropTypes.string,
+    contactPerson1: PropTypes.string,
+    contactPerson1Phone: PropTypes.string,
+    contactPerson2: PropTypes.string,
+    contactPerson2Phone: PropTypes.string,
+    address: PropTypes.string,
+    additionalInfo: PropTypes.string,
+  }),
+  setStudents: PropTypes.func,
+  onClose: PropTypes.func,
+};
+
 export default StudentCard;

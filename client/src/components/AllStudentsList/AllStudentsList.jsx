@@ -60,4 +60,11 @@ function AllStudentsList ({
   );
 }
 
+AllStudentsList.propTypes = {
+  setSelectedStudent: PropTypes.func,
+  setShowStudentCard: PropTypes.func,
+  onClose: PropTypes.func,
+  onSubmit: PropTypes.func,
+};
+
 export default AllStudentsList;

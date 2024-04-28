@@ -3,6 +3,7 @@ import { TbBusStop } from 'react-icons/tb';
 import { PiStudentDuotone } from 'react-icons/pi';
 import { useContext } from 'react';
 import { Context } from '../../App';
+import PropTypes from 'prop-types';
 
 function RouteInfoDisplay ({
   routeInfo,
@@ -11,7 +12,6 @@ function RouteInfoDisplay ({
   setSelectedStudent,
   setShowStudentCard,
 }) {
-
   const { students } = useContext(Context);
 
   function handleSelectStop (event) {
@@ -83,5 +83,38 @@ function RouteInfoDisplay ({
     </div>
   );
 }
+
+RouteInfoDisplay.propTypes = {
+  routeInfo: PropTypes.shape({
+    id: PropTypes.string,
+    type: PropTypes.string,
+    name: PropTypes.string,
+    stops: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        name: PropTypes.string,
+      })
+    ),
+  }),
+  setStopStudents: PropTypes.func,
+  stopStudents: PropTypes.arrayOf(
+    PropTypes.shape({
+      firstName: PropTypes.string,
+      lastName: PropTypes.string,
+      morningRoute: PropTypes.string,
+      morningStop: PropTypes.string,
+      eveningRoute: PropTypes.string,
+      eveningStop: PropTypes.string,
+      contactPerson1: PropTypes.string,
+      contactPerson1Phone: PropTypes.string,
+      contactPerson2: PropTypes.string,
+      contactPerson2Phone: PropTypes.string,
+      address: PropTypes.string,
+      additionalInfo: PropTypes.string,
+    })
+  ),
+  setSelectedStudent: PropTypes.func,
+  setShowStudentCard: PropTypes.func,
+};
 
 export default RouteInfoDisplay;
