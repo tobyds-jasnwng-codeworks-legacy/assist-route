@@ -1,6 +1,6 @@
 import './NavBar.css';
 
-function NavBar({ toggleStudentsList }) {
+function NavBar ({ toggleStudentsList }) {
   return (
     <nav>
       <div>

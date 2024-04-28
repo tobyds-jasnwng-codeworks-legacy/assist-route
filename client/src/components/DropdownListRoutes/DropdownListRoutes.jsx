@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import RouteInfoDisplay from '../RouteInfoDisplay/RouteInfoDisplay';
 import './DropdownListRoutes.css';
 
-function DropdownListRoutes({
+function DropdownListRoutes ({
   routes,
   setSelectedStudent,
   setShowStudentCard,
@@ -16,7 +16,7 @@ function DropdownListRoutes({
   const handleSelectChange = (event) => {
     setSelectedRoute(event.target.value);
     setStopStudents([]);
-  };
+  }
 
   // To display info of the selected route in the route info display section
   useEffect(() => {

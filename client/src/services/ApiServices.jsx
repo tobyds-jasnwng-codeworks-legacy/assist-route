@@ -2,7 +2,7 @@ import routesData from '../data/routesData.json';
 
 const studentsUrl = 'http://localhost:3000/students/'; // URL of the DB with students data
 
-export async function initFetchData({ setStudents, setRoutes }) {
+export async function initFetchData ({ setStudents, setRoutes }) {
   try {
     // Fetch students data
     const studentsResponse = await fetch(studentsUrl);
@@ -19,37 +19,32 @@ export async function initFetchData({ setStudents, setRoutes }) {
   }
 }
 
-export async function deleteStudent(id) {
+export async function deleteStudent (id) {
   try {
-    return await fetch(
-        studentsUrl + id,
-        {
-          method: 'DELETE',
-          mode: 'cors',
-        }
-    );
+    return await fetch(studentsUrl + id, {
+      method: 'DELETE',
+      mode: 'cors',
+    });
   } catch (error) {
     console.log('Error deleting student: ', error);
-    // add return 
+    // add return
   }
 }
 
-export async function addStudent(formData) {
+export async function addStudent (formData) {
   try {
     const res = await fetch(studentsUrl, {
-          method: 'POST',
-          mode: 'cors',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
     });
     const newStudent = await res.json();
     return newStudent;
   } catch (error) {
-     console.log('Error adding student: ', error);
-    // add return 
+    console.log('Error adding student: ', error);
+    // add return
   }
 }
-
-

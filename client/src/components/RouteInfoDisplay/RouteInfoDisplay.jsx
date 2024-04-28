@@ -2,10 +2,9 @@ import './RouteInfoDisplay.css';
 import { TbBusStop } from 'react-icons/tb';
 import { PiStudentDuotone } from 'react-icons/pi';
 import { useContext } from 'react';
-import { Context } from '../../App'
+import { Context } from '../../App';
 
-
-function RouteInfoDisplay({
+function RouteInfoDisplay ({
   routeInfo,
   setStopStudents,
   stopStudents,
@@ -14,8 +13,8 @@ function RouteInfoDisplay({
 }) {
 
   const { students } = useContext(Context);
-  
-  function handleSelectStop(event) {
+
+  function handleSelectStop (event) {
     const { value } = event.target;
     setStopStudents(
       students.filter(
@@ -28,7 +27,7 @@ function RouteInfoDisplay({
     );
   }
 
-  function handleSelectStudent(e) {
+  function handleSelectStudent (e) {
     const { value } = e.target;
     setSelectedStudent(value);
     setShowStudentCard(true);

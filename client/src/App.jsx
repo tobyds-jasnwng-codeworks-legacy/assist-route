@@ -7,9 +7,9 @@ import NewStudentForm from '@components/NewStudentForm/NewStudentForm';
 import StudentCard from '@components/StudentCard/StudentCard';
 import { initFetchData } from '@services/ApiServices';
 
-export const Context = createContext()
+export const Context = createContext();
 
-function App() {
+function App () {
   const [routes, setRoutes] = useState([]); // routes data
   const [students, setStudents] = useState([]); // students data
   const [showStudents, setShowStudents] = useState(false); // condition to show the list of students on button click
@@ -23,13 +23,13 @@ function App() {
   }, []);
 
   // Function to control visibility of the list of all students
-  function toggleStudentsList() {
+  function toggleStudentsList () {
     setShowStudents(!showStudents);
   }
 
   return (
     <>
-    <Context.Provider value={{students}}>
+      <Context.Provider value={{ students }}>
         <NavBar toggleStudentsList={toggleStudentsList} />
         <main>
           <DropdownListRoutes
