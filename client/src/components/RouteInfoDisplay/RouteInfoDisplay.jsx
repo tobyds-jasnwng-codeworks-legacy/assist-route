@@ -85,7 +85,7 @@ function RouteInfoDisplay ({
 }
 
 RouteInfoDisplay.propTypes = {
-  routeInfo: PropTypes.shape({
+  routeInfo: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string,
     type: PropTypes.string,
     name: PropTypes.string,
@@ -95,7 +95,7 @@ RouteInfoDisplay.propTypes = {
         name: PropTypes.string,
       })
     ),
-  }),
+  })),
   setStopStudents: PropTypes.func,
   stopStudents: PropTypes.arrayOf(
     PropTypes.shape({

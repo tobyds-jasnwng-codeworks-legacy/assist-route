@@ -15,7 +15,7 @@ function App () {
   const [showStudents, setShowStudents] = useState(false); // condition to show the list of students on button click
   const [showNewStudentForm, setShowNewStudentForm] = useState(false); // condition to show the form for adding new student on button click
   const [showStudentCard, setShowStudentCard] = useState(false); // condition to show the card with complete information about student
-  const [selectedStudent, setSelectedStudent] = useState('');
+  const [selectedStudent, setSelectedStudent] = useState(null);
 
   // Fetching data on init
   useEffect(() => {
