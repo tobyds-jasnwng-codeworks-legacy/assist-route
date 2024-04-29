@@ -1,4 +1,4 @@
-nav {
+.nav {
   background-color: #215e82;
   color: #ffc94c;
   position: relative;
@@ -8,6 +8,6 @@ nav {
   display: flex;
   justify-content: space-between;
 }
-#projectName {
+.projectName {
   font-size: xx-large;
 }
