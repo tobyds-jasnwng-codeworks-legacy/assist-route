@@ -12,7 +12,6 @@ function AllStudentsList ({
   onSubmit,
 }: Props) {
   const { students }: { students: Array<Student> } = useContext(Context);
-  console.log(students);
 
   function handleSelectStudent (e: MouseEvent<HTMLButtonElement>) {
     const value = (e.target as HTMLButtonElement).value;
