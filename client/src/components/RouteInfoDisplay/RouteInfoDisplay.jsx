@@ -1,5 +1,4 @@
 import styles from './RouteInfoDisplay.module.css';
-// import './RouteInfoDisplay.css';
 import { TbBusStop } from 'react-icons/tb';
 import { PiStudentDuotone } from 'react-icons/pi';
 import { useContext } from 'react';

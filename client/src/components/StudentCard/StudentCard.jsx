@@ -1,4 +1,4 @@
-import './StudentCard.css';
+import styles from './StudentCard.module.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { deleteStudent } from '@services/ApiServices';
 import { useContext } from 'react';
@@ -16,7 +16,7 @@ function StudentCard ({ setStudents, selectedStudent, onClose }) {
 
   const studentInfoElements = dataToRenderShort.map(([key, value]) => (
     <div key={key} className='studentInfoEl'>
-      <p id='elValue'>
+      <p id='elValue' className={styles.elValue}>
         <span className='italicThin'>{camelToText(key)}: </span>
         <strong>{value}</strong>
       </p>
@@ -45,7 +45,7 @@ function StudentCard ({ setStudents, selectedStudent, onClose }) {
         onClick={onClose}
         aria-label='Close'
       />
-      <div className='fieldsList'>{studentInfoElements}</div>
+      <div className={styles.fieldsList}>{studentInfoElements}</div>
       <button type='button' name='deleteStudentButton' onClick={handleDelete}>
         DELETE
       </button>
