@@ -1,6 +1,7 @@
 import './NavBar.css';
+import PropTypes from 'prop-types';
 
-function NavBar({ toggleStudentsList }) {
+function NavBar ({ toggleStudentsList }) {
   return (
     <nav>
       <div>
@@ -12,5 +13,9 @@ function NavBar({ toggleStudentsList }) {
     </nav>
   );
 }
+
+NavBar.propTypes = {
+  toggleStudentsList: PropTypes.func,
+};
 
 export default NavBar;

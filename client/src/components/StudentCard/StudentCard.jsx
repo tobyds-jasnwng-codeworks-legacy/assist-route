@@ -2,10 +2,9 @@ import './StudentCard.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { deleteStudent } from '@services/ApiServices';
 import { useContext } from 'react';
-import { Context } from '../../App'
+import { Context } from '../../App';
 
-
-function StudentCard({ setStudents, selectedStudent, onClose }) {
+function StudentCard ({ setStudents, selectedStudent, onClose }) {
   const { students } = useContext(Context);
 
   const studentData = students.filter(
@@ -23,13 +22,13 @@ function StudentCard({ setStudents, selectedStudent, onClose }) {
     </div>
   ));
 
-  function camelToText(camelCase) {
+  function camelToText (camelCase) {
     return camelCase.replace(/([A-Z])/g, ' $1').toLowerCase();
   }
 
-  async function handleDelete() {
+  async function handleDelete () {
     await deleteStudent(studentData.id);
-    
+
     // delete student from list
     setStudents((oldList) => {
       const newList = oldList.filter((item) => item.id !== studentData.id);
@@ -52,5 +51,24 @@ function StudentCard({ setStudents, selectedStudent, onClose }) {
     </div>
   );
 }
+
+StudentCard.propTypes = {
+  selectedStudent: PropTypes.shape({
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    morningRoute: PropTypes.string,
+    morningStop: PropTypes.string,
+    eveningRoute: PropTypes.string,
+    eveningStop: PropTypes.string,
+    contactPerson1: PropTypes.string,
+    contactPerson1Phone: PropTypes.string,
+    contactPerson2: PropTypes.string,
+    contactPerson2Phone: PropTypes.string,
+    address: PropTypes.string,
+    additionalInfo: PropTypes.string,
+  }),
+  setStudents: PropTypes.func,
+  onClose: PropTypes.func,
+};
 
 export default StudentCard;

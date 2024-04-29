@@ -3,10 +3,11 @@ import './NewStudentForm.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { addStudent } from '@services/ApiServices';
 import { useContext } from 'react';
-import { Context } from '../../App'
+import { Context } from '../../App';
 
+import PropTypes from 'prop-types';
 
-function NewStudentForm({ routes, onClose, setStudents }) {
+function NewStudentForm ({ routes, onClose, setStudents }) {
   const { students } = useContext(Context);
   const morningRoutes = routes.filter((route) => route.type === 'morning');
   const eveningRoutes = routes.filter((route) => route.type === 'evening');
@@ -24,12 +25,12 @@ function NewStudentForm({ routes, onClose, setStudents }) {
     additionalInfo: '',
   });
 
-  function handleChange(e) {
+  function handleChange (e) {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
 
-  async function handleSubmit(e) {
+  async function handleSubmit (e) {
     e.preventDefault();
 
     // Validation of mandatory fields
@@ -54,7 +55,7 @@ function NewStudentForm({ routes, onClose, setStudents }) {
       [
         ...students,
         newStudent,
-      ] /*.sort((a, b) => a.firstName.localeCompare(b.firstName))*/
+      ] /* .sort((a, b) => a.firstName.localeCompare(b.firstName))*/
     ); // Adding new student to the list in an alphabetical order
     onClose();
   }
@@ -231,5 +232,23 @@ function NewStudentForm({ routes, onClose, setStudents }) {
     </div>
   );
 }
+
+NewStudentForm.propTypes = {
+  routes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      type: PropTypes.string,
+      name: PropTypes.string,
+      stops: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string,
+          name: PropTypes.string,
+        })
+      ),
+    })
+  ),
+  onClose: PropTypes.func,
+  setStudents: PropTypes.func,
+};
 
 export default NewStudentForm;
