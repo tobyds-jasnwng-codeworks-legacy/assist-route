@@ -1,11 +1,13 @@
-import PropTypes from 'prop-types';
 import styles from './NavBar.module.css';
 
-function NavBar ({ toggleStudentsList }) {
+function NavBar ({ toggleStudentsList }: Props) {
   return (
     <nav className={styles.nav}>
       <div>
-        <h1 id='projectName' className={`lilita-one-regular ${styles.projectName}`}>
+        <h1
+          id='projectName'
+          className={`lilita-one-regular ${styles.projectName}`}
+        >
           ASSIST ROUTE
         </h1>
       </div>
@@ -14,8 +16,8 @@ function NavBar ({ toggleStudentsList }) {
   );
 }
 
-NavBar.propTypes = {
-  toggleStudentsList: PropTypes.func,
+type Props = {
+  toggleStudentsList: () => void;
 };
 
 export default NavBar;
