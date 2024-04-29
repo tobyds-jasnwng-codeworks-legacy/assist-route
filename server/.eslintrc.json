@@ -13,8 +13,8 @@
   },
   "plugins": ["json"],
   "rules": {
-    "no-unused-vars": "off",
-    "no-undef": "off",
+    "no-unused-vars": "warn",
+    "no-undef": "warn",
     "no-console": "off",
     "eqeqeq": "warn",
     "func-style": ["error", "declaration"],
