@@ -1,6 +1,10 @@
 import routesData from '../data/routesData.json';
 
-const studentsUrl = 'http://localhost:3000/students/'; // URL of the DB with students data
+const Base_URL = import.meta.env.VITE_API_BASE_URL;
+
+const studentsUrl = Base_URL
+  ? `${Base_URL}/students/`
+  : 'http://localhost:3000/students/'; // URL of the DB with students data
 
 export async function initFetchData ({ setStudents, setRoutes }) {
   try {
