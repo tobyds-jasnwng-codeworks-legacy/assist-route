@@ -15,7 +15,6 @@ function AllStudentsList ({
 
   function handleSelectStudent (e: MouseEvent<HTMLButtonElement>) {
     const value = (e.target as HTMLButtonElement).value;
-    console.log(value);
     setSelectedStudent(value);
     setShowStudentCard(true);
   }

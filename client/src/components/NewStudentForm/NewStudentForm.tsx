@@ -4,14 +4,13 @@ import { addStudent } from '@services/ApiServices';
 import { useContext } from 'react';
 import { Context } from '../../App';
 import styles from './NewStudentForm.module.css';
+import { Route, Student, Stop } from '../../types/index';
+// import PropTypes from 'prop-types';
 
-
-import PropTypes from 'prop-types';
-
-function NewStudentForm ({ routes, onClose, setStudents }) {
-  const { students } = useContext(Context);
-  const morningRoutes = routes.filter((route) => route.type === 'morning');
-  const eveningRoutes = routes.filter((route) => route.type === 'evening');
+function NewStudentForm({ routes, onClose, setStudents }: Props) {
+  const { students }: { students: Array<Student> } = useContext(Context);
+  const morningRoutes: Route[] = routes.filter((route) => route.type === 'morning');
+  const eveningRoutes: Route[] = routes.filter((route) => route.type === 'evening');
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -22,16 +21,18 @@ function NewStudentForm ({ routes, onClose, setStudents }) {
     eveningStop: '',
     contactPerson1: '',
     contactPerson1Phone: '',
+    contactPerson2: '',
+    contactPerson2Phone: '',
     address: '',
     additionalInfo: '',
   });
 
-  function handleChange (e) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
 
-  async function handleSubmit (e) {
+  async function handleSubmit (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     // Validation of mandatory fields
@@ -102,7 +103,7 @@ function NewStudentForm ({ routes, onClose, setStudents }) {
           <option disabled value=''>
             Choose your route...
           </option>
-          {morningRoutes.map((route) => (
+          {morningRoutes.map((route: Route) => (
             <option key={route.id} value={route.name}>
               {route.name}
             </option>
@@ -122,8 +123,8 @@ function NewStudentForm ({ routes, onClose, setStudents }) {
                 Choose morning stop...
               </option>
               {morningRoutes
-                .find((route) => route.name === formData.morningRoute)
-                .stops.map((stop) => (
+                .find((route: Route) => route.name === formData.morningRoute)!
+                .stops.map((stop: Stop) => (
                   <option key={stop.id} value={stop.name}>
                     {stop.name}
                   </option>
@@ -142,8 +143,8 @@ function NewStudentForm ({ routes, onClose, setStudents }) {
           <option disabled value=''>
             Choose your route...
           </option>
-          {eveningRoutes.map((route) => (
-            <option key={route.id} name='eveningRoute' value={route.name}>
+          {eveningRoutes.map((route: Route) => (
+            <option key={route.id} name="eveningRoute" value={route.name}>
               {route.name}
             </option>
           ))}
@@ -162,7 +163,7 @@ function NewStudentForm ({ routes, onClose, setStudents }) {
                 Choose evening stop...
               </option>
               {eveningRoutes
-                .find((route) => route.name === formData.eveningRoute)
+                .find((route: Route) => route.name === formData.eveningRoute)!
                 .stops.map((stop) => (
                   <option key={stop.id} value={stop.name}>
                     {stop.name}
@@ -234,22 +235,10 @@ function NewStudentForm ({ routes, onClose, setStudents }) {
   );
 }
 
-NewStudentForm.propTypes = {
-  routes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      type: PropTypes.string,
-      name: PropTypes.string,
-      stops: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string,
-          name: PropTypes.string,
-        })
-      ),
-    })
-  ),
-  onClose: PropTypes.func,
-  setStudents: PropTypes.func,
-};
+type Props = {
+  routes: Route[],
+  onClose: () => void,
+  setStudents: ()=>void,
+}
 
 export default NewStudentForm;
