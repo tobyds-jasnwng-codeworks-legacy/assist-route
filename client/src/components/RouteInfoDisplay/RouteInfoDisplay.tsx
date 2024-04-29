@@ -1,9 +1,9 @@
 import styles from './RouteInfoDisplay.module.css';
 import { TbBusStop } from 'react-icons/tb';
 import { PiStudentDuotone } from 'react-icons/pi';
-import { useContext } from 'react';
+import { useContext, MouseEvent } from 'react';
 import { Context } from '../../App';
-import PropTypes from 'prop-types';
+import { Student, Route } from '../../types/index';
 
 function RouteInfoDisplay ({
   routeInfo,
@@ -11,14 +11,14 @@ function RouteInfoDisplay ({
   stopStudents,
   setSelectedStudent,
   setShowStudentCard,
-}) {
-  const { students } = useContext(Context);
+}: Props) {
+  const { students }: { students: Array<Student> }  = useContext(Context);
 
-  function handleSelectStop (event) {
-    const { value } = event.target;
+  function handleSelectStop (event: MouseEvent<HTMLButtonElement>) {
+    const { value } = (event.target as HTMLButtonElement);
     setStopStudents(
       students.filter(
-        (student) =>
+        (student: Student) =>
           (student.morningRoute === routeInfo[0].name &&
             student.morningStop === value) ||
           (student.eveningRoute === routeInfo[0].name &&
@@ -27,8 +27,8 @@ function RouteInfoDisplay ({
     );
   }
 
-  function handleSelectStudent (e) {
-    const { value } = e.target;
+  function handleSelectStudent (e: MouseEvent<HTMLButtonElement>) {
+    const { value } = (e.target as HTMLButtonElement);
     setSelectedStudent(value);
     setShowStudentCard(true);
   }
@@ -84,37 +84,13 @@ function RouteInfoDisplay ({
   );
 }
 
-RouteInfoDisplay.propTypes = {
-  routeInfo: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string,
-    type: PropTypes.string,
-    name: PropTypes.string,
-    stops: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string,
-        name: PropTypes.string,
-      })
-    ),
-  })),
-  setStopStudents: PropTypes.func,
-  stopStudents: PropTypes.arrayOf(
-    PropTypes.shape({
-      firstName: PropTypes.string,
-      lastName: PropTypes.string,
-      morningRoute: PropTypes.string,
-      morningStop: PropTypes.string,
-      eveningRoute: PropTypes.string,
-      eveningStop: PropTypes.string,
-      contactPerson1: PropTypes.string,
-      contactPerson1Phone: PropTypes.string,
-      contactPerson2: PropTypes.string,
-      contactPerson2Phone: PropTypes.string,
-      address: PropTypes.string,
-      additionalInfo: PropTypes.string,
-    })
-  ),
-  setSelectedStudent: PropTypes.func,
-  setShowStudentCard: PropTypes.func,
-};
+type Props = {
+  routeInfo: Route[],
+  setStopStudents: ()=>void,
+  stopStudents: Student[],
+  setSelectedStudent: ()=>void,
+  setShowStudentCard: ()=>void,
+
+}
 
 export default RouteInfoDisplay;
