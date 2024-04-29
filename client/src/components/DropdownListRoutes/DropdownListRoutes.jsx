@@ -32,9 +32,10 @@ function DropdownListRoutes ({
   }, [selectedRoute, routes]);
 
   return (
-    <div id={styles.routeInfoContainer}>
+    <div id="routeInfoContainer" className={styles.routeInfoContainer}>
       <select
-        id={styles.dropdownRoutes}
+        id="dropdownRoutes"
+        className={styles.dropdownRoutes}
         value={selectedRoute}
         onChange={handleSelectChange}
       >
