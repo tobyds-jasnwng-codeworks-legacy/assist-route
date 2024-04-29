@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import RouteInfoDisplay from '../RouteInfoDisplay/RouteInfoDisplay';
-import './DropdownListRoutes.css';
 import PropTypes from 'prop-types';
+import styles from './DropdownListRoutes.module.css';
 
 function DropdownListRoutes ({
   routes,
@@ -32,9 +32,9 @@ function DropdownListRoutes ({
   }, [selectedRoute, routes]);
 
   return (
-    <div id='routeInfoContainer'>
+    <div id={styles.routeInfoContainer}>
       <select
-        id='dropdownRoutes'
+        id={styles.dropdownRoutes}
         value={selectedRoute}
         onChange={handleSelectChange}
       >
