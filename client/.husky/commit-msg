@@ -1,0 +1,3 @@
+# client/.husky/commit-msg
+cd client
+npx --no -- commitlint --edit $1
