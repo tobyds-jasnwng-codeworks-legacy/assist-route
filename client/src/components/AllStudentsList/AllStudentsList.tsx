@@ -1,33 +1,35 @@
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { PiStudentDuotone } from 'react-icons/pi';
-import { useContext } from 'react';
+import { MouseEvent, useContext } from 'react';
 import { Context } from '../../App';
 import styles from './AllStudentsList.module.css';
-import PropTypes from 'prop-types';
+import { Student } from '../../types/index';
 
 function AllStudentsList ({
   setSelectedStudent,
   setShowStudentCard,
   onClose,
   onSubmit,
-}) {
-  const { students } = useContext(Context);
+}: Props) {
+  const { students }: { students: Array<Student> } = useContext(Context);
+  console.log(students);
 
-  function handleSelectStudent (e) {
-    const { value } = e.target;
+  function handleSelectStudent (e: MouseEvent<HTMLButtonElement>) {
+    const value = (e.target as HTMLButtonElement).value;
+    console.log(value);
     setSelectedStudent(value);
     setShowStudentCard(true);
   }
 
   return (
-    <div className="listContainer">
+    <div className='listContainer'>
       <AiFillCloseCircle
-        className="close"
+        className='close'
         onClick={onClose}
         aria-label='Close'
       />
       <button
-        id="addNewStudentButton"
+        id='addNewStudentButton'
         className={styles.addNewStudentButton}
         onClick={() => {
           onClose();
@@ -36,8 +38,8 @@ function AllStudentsList ({
       >
         Add new student
       </button>
-      <div id="allStudentsList" className={`list ${styles.allStudentsList}`}>
-        {students.map((student) => (
+      <div id='allStudentsList' className={`list ${styles.allStudentsList}`}>
+        {students.map((student: Student) => (
           <>
             <PiStudentDuotone />
             <button
@@ -45,7 +47,7 @@ function AllStudentsList ({
               name='studentInfo'
               value={student.id}
               type='button'
-              className="studentButton"
+              className='studentButton'
               onClick={(e) => {
                 handleSelectStudent(e);
                 onClose();
@@ -60,11 +62,11 @@ function AllStudentsList ({
   );
 }
 
-AllStudentsList.propTypes = {
-  setSelectedStudent: PropTypes.func,
-  setShowStudentCard: PropTypes.func,
-  onClose: PropTypes.func,
-  onSubmit: PropTypes.func,
+type Props = {
+  setSelectedStudent: () => void;
+  setShowStudentCard: () => void;
+  onClose: () => void;
+  onSubmit: () => void;
 };
 
 export default AllStudentsList;
