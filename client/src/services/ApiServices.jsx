@@ -17,6 +17,7 @@ export async function initFetchData ({ setStudents, setRoutes }) {
     setStudents(sortedStudentsBody);
 
     // Set routes data from JSON file
+    console.log('RD', routesData);
     setRoutes(routesData);
   } catch (error) {
     console.log('Error fetching data: ', error);

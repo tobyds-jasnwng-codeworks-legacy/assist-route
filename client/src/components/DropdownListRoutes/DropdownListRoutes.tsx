@@ -1,20 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
 import RouteInfoDisplay from '../RouteInfoDisplay/RouteInfoDisplay';
-import PropTypes from 'prop-types';
 import styles from './DropdownListRoutes.module.css';
+import { Student, Route } from '../../types/index';
 
 function DropdownListRoutes ({
   routes,
   setSelectedStudent,
   setShowStudentCard,
   onClose,
-}) {
-  const [selectedRoute, setSelectedRoute] = useState('');
-  const [routeInfo, setRouteInfo] = useState(null);
-  const [stopStudents, setStopStudents] = useState([]);
+}: Props) {
+  const [selectedRoute, setSelectedRoute] = useState<string>('');
+  const [routeInfo, setRouteInfo] = useState<Route[]>();
+  const [stopStudents, setStopStudents] = useState<Student[]>([]);
 
   // Function to set the selected route
-  function handleSelectChange (event) {
+  function handleSelectChange (event: ChangeEvent<HTMLSelectElement>) {
     setSelectedRoute(event.target.value);
     setStopStudents([]);
   }
@@ -23,11 +23,11 @@ function DropdownListRoutes ({
   useEffect(() => {
     if (selectedRoute) {
       const selectedRouteInfo = routes.filter(
-        (route) => route.id === selectedRoute
+        (route: Route) => route.id === selectedRoute
       );
       setRouteInfo(selectedRouteInfo);
     } else {
-      setRouteInfo(null);
+      setRouteInfo(undefined);
     }
   }, [selectedRoute, routes]);
 
@@ -42,7 +42,7 @@ function DropdownListRoutes ({
         <option disabled value=''>
           Choose your route...
         </option>
-        {routes.map((route) => (
+        {routes.map((route: Route) => (
           <option key={route.id} value={route.id}>
             {route.name} - {route.type}
           </option>
@@ -62,23 +62,11 @@ function DropdownListRoutes ({
   );
 }
 
-DropdownListRoutes.propTypes = {
-  routes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      type: PropTypes.string,
-      name: PropTypes.string,
-      stops: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string,
-          name: PropTypes.string,
-        })
-      ),
-    })
-  ),
-  setSelectedStudent: PropTypes.func,
-  setShowStudentCard: PropTypes.func,
-  onClose: PropTypes.func,
-};
+type Props = {
+  routes: Route[],
+  setSelectedStudent: ()=>null,
+  setShowStudentCard: ()=>null,
+  onClose: ()=>null,
+}
 
 export default DropdownListRoutes;
