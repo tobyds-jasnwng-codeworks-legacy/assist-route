@@ -15,7 +15,7 @@
   "rules": {
     "no-unused-vars": "warn",
     "no-undef": "warn",
-    "no-console": "warn",
+    "no-console": "off",
     "eqeqeq": "warn",
     "func-style": ["error", "declaration"],
     "object-shorthand": "off",
