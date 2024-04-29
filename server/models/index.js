@@ -1,20 +1,24 @@
 'use strict';
 // Connecting PostgreSQL + Sequelize ORM database
-const { Sequelize } = require('sequelize');
-const db = {};
-
-const sequelize = new Sequelize('assist-route', 'jasonwong', '', {
-  host: 'localhost',
-  dialect: 'postgres',
-  logging: true, // should be false in production. Cuando logging está configurado en false, Sequelize no mostrará ninguna salida en la consola relacionada con las consultas SQL que se están ejecutando.
-  pool: {
-    max: 5, // número máximo de conexiones en el grupo de conexiones
-    min: 0, // número mínimo de conexiones en el grupo de conexiones
-    acquire: 30000, // tiempo máximo, en milisegundos, que Sequelize esperará para obtener una conexión disponible del grupo de conexiones antes de arrojar un error
-    idle: 10000, // tiempo máximo, en milisegundos, que una conexión puede estar inactiva en el grupo de conexiones antes de que Sequelize la elimine del grupo
-  },
-  operatorsAliases: false, // se utiliza para desactivar los alias de operadores obsoletos
+const path = require('path');
+const Sequelize = require('sequelize');
+require('dotenv').config({
+  path: path.join(__dirname, '../.env'),
 });
+
+const db = {};
+const config = {
+  host: process.env.PGHOST,
+  dialect: 'postgres',
+  logging: process.env.NODE_ENV === 'production' ? false : true,
+};
+
+const sequelize = new Sequelize(
+  process.env.PGDATABASE,
+  process.env.PGUSER,
+  process.env.PGPASSWORD,
+  config
+);
 
 // checking connection with DB
 async function connect () {
