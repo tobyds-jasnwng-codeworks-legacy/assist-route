@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import './NewStudentForm.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { addStudent } from '@services/ApiServices';
 import { useContext } from 'react';
 import { Context } from '../../App';
+import styles from './NewStudentForm.module.css';
+
 
 import PropTypes from 'prop-types';
 
@@ -61,18 +62,18 @@ function NewStudentForm ({ routes, onClose, setStudents }) {
   }
 
   return (
-    <div id='newStudentFormContainer'>
+    <div id='newStudentFormContainer' className={styles.newStudentFormContainer}>
       <AiFillCloseCircle
         className='close'
         onClick={onClose}
         aria-label='Close'
       />
-      <form id='NewStudentForm' className='form' onSubmit={handleSubmit}>
+      <form id='NewStudentForm' className={`form ${styles.NewStudentForm}`} onSubmit={handleSubmit}>
         <label htmlFor='firstName' className='formLabel'>
           Name *
         </label>
         <input
-          className='formInput'
+          className={styles.formInput}
           type='text'
           name='firstName'
           value={formData.firstName || ''}
@@ -225,7 +226,7 @@ function NewStudentForm ({ routes, onClose, setStudents }) {
           placeholder='Insert studen´s home address...'
           onChange={handleChange}
         ></input>
-        <button id='SubmitNewStudent' type='submit'>
+        <button id='SubmitNewStudent' className={styles.SubmitNewStudent} type='submit'>
           SUBMIT
         </button>
       </form>

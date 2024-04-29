@@ -1,4 +1,4 @@
-#routeDisplay {
+.routeDisplay {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -7,7 +7,7 @@
   padding: 20px;
   color: #215e82;
 }
-#routeInfoDisplay {
+.routeInfoDisplay {
   color: #215e82;
   height: fit-content;
   display: grid;
@@ -20,7 +20,7 @@
   padding: 5px;
   clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
 }
-#stopStudentsList {
+.stopStudentsList {
   margin-top: 20px;
   margin-bottom: 0;
   justify-content: flex-start;

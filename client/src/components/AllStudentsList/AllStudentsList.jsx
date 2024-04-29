@@ -1,9 +1,8 @@
-import './AllStudentsList.css';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { PiStudentDuotone } from 'react-icons/pi';
 import { useContext } from 'react';
 import { Context } from '../../App';
-
+import styles from './AllStudentsList.module.css';
 import PropTypes from 'prop-types';
 
 function AllStudentsList ({
@@ -21,14 +20,15 @@ function AllStudentsList ({
   }
 
   return (
-    <div className='listContainer'>
+    <div className="listContainer">
       <AiFillCloseCircle
-        className='close'
+        className="close"
         onClick={onClose}
         aria-label='Close'
       />
       <button
-        id='addNewStudentButton'
+        id="addNewStudentButton"
+        className={styles.addNewStudentButton}
         onClick={() => {
           onClose();
           onSubmit();
@@ -36,7 +36,7 @@ function AllStudentsList ({
       >
         Add new student
       </button>
-      <div id='allStudentsList' className='list'>
+      <div id="allStudentsList" className={`list ${styles.allStudentsList}`}>
         {students.map((student) => (
           <>
             <PiStudentDuotone />
@@ -45,7 +45,7 @@ function AllStudentsList ({
               name='studentInfo'
               value={student.id}
               type='button'
-              className='studentButton'
+              className="studentButton"
               onClick={(e) => {
                 handleSelectStudent(e);
                 onClose();
