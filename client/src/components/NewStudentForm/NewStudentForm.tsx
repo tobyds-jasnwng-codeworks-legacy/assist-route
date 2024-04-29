@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { addStudent } from '@services/ApiServices';
-import { useContext } from 'react';
+import { useContext, ChangeEvent, FormEvent } from 'react';
 import { Context } from '../../App';
 import styles from './NewStudentForm.module.css';
 import { Route, Student, Stop } from '../../types/index';
@@ -27,12 +27,12 @@ function NewStudentForm({ routes, onClose, setStudents }: Props) {
     additionalInfo: '',
   });
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) {
+  function handleChange(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
 
-  async function handleSubmit (e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit (e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     // Validation of mandatory fields
