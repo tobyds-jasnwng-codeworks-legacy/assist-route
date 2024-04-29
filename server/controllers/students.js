@@ -1,9 +1,9 @@
 'use strict';
-const Student = require('../models/students');
+const db = require('../models/index');
 
 async function getAllStudents (req, res) {
   try {
-    const students = await Student.findAll();
+    const students = await db.Student.findAll();
     res.status(200).json(students); // request succeeded
   } catch (error) {
     console.log(error);
@@ -13,7 +13,7 @@ async function getAllStudents (req, res) {
 
 async function addStudent (req, res) {
   try {
-    const newStudent = await Student.create(req.body);
+    const newStudent = await db.Student.create(req.body);
     res.status(201).json(newStudent); // request fulfilled, new resource created.
   } catch (error) {
     console.log('Missing parameters', error);
@@ -26,7 +26,7 @@ async function addStudent (req, res) {
 async function deleteStudent (req, res) {
   try {
     const studentId = req.params.id;
-    await Student.destroy({
+    await db.Student.destroy({
       where: {
         id: studentId,
       },

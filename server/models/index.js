@@ -1,5 +1,6 @@
 'use strict';
 // Connecting PostgreSQL + Sequelize ORM database
+const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 require('dotenv').config({
@@ -20,16 +21,17 @@ const sequelize = new Sequelize(
   config
 );
 
-// checking connection with DB
-async function connect () {
-  try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
+const files = fs.readdirSync(__dirname);
+
+for (const file of files) {
+  if (file !== 'index.js') {
+    const model = require(path.join(__dirname, file))(
+      sequelize,
+      Sequelize.DataTypes
+    );
+    db[model.name] = model;
   }
 }
-connect();
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
