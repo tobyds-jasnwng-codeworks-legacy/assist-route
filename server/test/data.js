@@ -58,5 +58,4 @@ const newData = {
   additionalInfo: '',
 };
 
-
-module.exports = {seedData, newData};
+module.exports = { seedData, newData };
