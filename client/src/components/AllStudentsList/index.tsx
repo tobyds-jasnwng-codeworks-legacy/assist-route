@@ -3,7 +3,7 @@ import { PiStudentDuotone } from 'react-icons/pi';
 import { Dispatch, MouseEvent, SetStateAction, useContext } from 'react';
 
 import { Context } from '@src/App';
-import { Student } from '@src/types/index';
+import { Student, ContextType } from '@src/types/index';
 import styles from './index.module.css';
 
 function AllStudentsList ({
@@ -12,7 +12,7 @@ function AllStudentsList ({
   onClose,
   onSubmit,
 }: Props) {
-  const { students }: { students: Array<Student> } = useContext(Context);
+  const { students }: ContextType = useContext(Context);
 
   function handleSelectStudent (e: MouseEvent<HTMLButtonElement>) {
     const value = (e.target as HTMLButtonElement).value;
@@ -63,7 +63,7 @@ function AllStudentsList ({
 
 type Props = {
   setSelectedStudent: Dispatch<SetStateAction<string | null>>;
-  setShowStudentCard: Dispatch<SetStateAction<boolean | null>>;
+  setShowStudentCard: Dispatch<SetStateAction<boolean>>;
   onClose: () => void;
   onSubmit: () => void;
 };

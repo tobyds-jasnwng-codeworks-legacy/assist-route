@@ -1,13 +1,20 @@
-import { useState } from 'react';
+import {
+  useState,
+  useContext,
+  ChangeEvent,
+  FormEvent,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
+
+import { Context } from '@src/App';
 import { addStudent } from '@services/ApiServices';
-import { useContext, ChangeEvent, FormEvent } from 'react';
-import { Context } from '../../App';
+import { Route, Student, Stop, ContextType } from '@src/types/index';
 import styles from './index.module.css';
-import { Route, Student, Stop } from '../../types/index';
 
 function NewStudentForm ({ routes, onClose, setStudents }: Props) {
-  const { students }: { students: Array<Student> } = useContext(Context);
+  const { students }: ContextType = useContext(Context);
   const morningRoutes: Route[] = routes.filter(
     (route) => route.type === 'morning'
   );
@@ -57,7 +64,7 @@ function NewStudentForm ({ routes, onClose, setStudents }: Props) {
       alert('Please, select the stop.');
     }
 
-    const newStudent = await addStudent(formData);
+    const newStudent: Student = await addStudent(formData);
     setStudents(
       [
         ...students,
@@ -236,7 +243,7 @@ function NewStudentForm ({ routes, onClose, setStudents }: Props) {
           type='text'
           name='address'
           value={formData.address || ''}
-          placeholder='Insert studen´s home address...'
+          placeholder="Insert student's home address..."
           onChange={handleChange}
         ></input>
         <button
@@ -254,7 +261,7 @@ function NewStudentForm ({ routes, onClose, setStudents }: Props) {
 type Props = {
   routes: Route[];
   onClose: () => void;
-  setStudents: (students: Array<Student>) => void;
+  setStudents: Dispatch<SetStateAction<Student[]>>;
 };
 
 export default NewStudentForm;

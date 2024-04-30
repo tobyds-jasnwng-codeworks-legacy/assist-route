@@ -1,4 +1,10 @@
-import { useState, useEffect, ChangeEvent } from 'react';
+import {
+  useState,
+  useEffect,
+  ChangeEvent,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 
 import RouteInfoDisplay from '@components/RouteInfoDisplay/';
 import { Student, Route } from '@src/types/index';
@@ -8,6 +14,7 @@ function DropdownListRoutes ({
   routes,
   setSelectedStudent,
   setShowStudentCard,
+  onClose,
 }: Props) {
   const [selectedRoute, setSelectedRoute] = useState<string>('');
   const [routeInfo, setRouteInfo] = useState<Route[]>();
@@ -55,6 +62,7 @@ function DropdownListRoutes ({
           setStopStudents={setStopStudents}
           setSelectedStudent={setSelectedStudent}
           setShowStudentCard={setShowStudentCard}
+          onClose={onClose}
         />
       )}
     </div>
@@ -63,9 +71,9 @@ function DropdownListRoutes ({
 
 type Props = {
   routes: Route[];
-  setSelectedStudent: () => null;
-  setShowStudentCard: () => null;
-  onClose: () => null;
+  setSelectedStudent: Dispatch<SetStateAction<string | null>>;
+  setShowStudentCard: Dispatch<SetStateAction<boolean>>;
+  onClose: (value: SetStateAction<boolean>) => void;
 };
 
 export default DropdownListRoutes;

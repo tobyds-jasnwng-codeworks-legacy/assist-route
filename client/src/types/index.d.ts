@@ -28,3 +28,7 @@ export type Route = {
   stops: Stop[];
   type: string;
 };
+
+export type ContextType = {
+  students: Student[];
+};
