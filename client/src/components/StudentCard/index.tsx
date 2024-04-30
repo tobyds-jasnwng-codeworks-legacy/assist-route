@@ -1,16 +1,16 @@
-import { useContext } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
-import PropTypes from 'prop-types';
 
 import { Context } from '@src/App';
 import { deleteStudent } from '@services/ApiServices';
 import styles from './index.module.css';
+import { Student } from '@src/types/index';
 
-function StudentCard ({ setStudents, selectedStudent, onClose }) {
-  const { students } = useContext(Context);
+function StudentCard ({ setStudents, selectedStudent, onClose }: Props) {
+  const { students }: { students: Array<Student> } = useContext(Context);
 
   const studentData = students.filter(
-    (student) => student.id === parseInt(selectedStudent)
+    (student) => student.id === selectedStudent.id
   )[0];
   const dataToRender = Object.entries(studentData);
   const dataToRenderShort = dataToRender.slice(1);
@@ -24,7 +24,7 @@ function StudentCard ({ setStudents, selectedStudent, onClose }) {
     </div>
   ));
 
-  function camelToText (camelCase) {
+  function camelToText (camelCase: string): string {
     return camelCase.replace(/([A-Z])/g, ' $1').toLowerCase();
   }
 
@@ -32,8 +32,10 @@ function StudentCard ({ setStudents, selectedStudent, onClose }) {
     await deleteStudent(studentData.id);
 
     // delete student from list
-    setStudents((oldList) => {
-      const newList = oldList.filter((item) => item.id !== studentData.id);
+    setStudents((oldList: Student[]) => {
+      const newList = oldList.filter(
+        (item: Student) => item.id !== studentData.id
+      );
       return newList;
     });
     onClose();
@@ -54,23 +56,10 @@ function StudentCard ({ setStudents, selectedStudent, onClose }) {
   );
 }
 
-StudentCard.propTypes = {
-  selectedStudent: PropTypes.shape({
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    morningRoute: PropTypes.string,
-    morningStop: PropTypes.string,
-    eveningRoute: PropTypes.string,
-    eveningStop: PropTypes.string,
-    contactPerson1: PropTypes.string,
-    contactPerson1Phone: PropTypes.string,
-    contactPerson2: PropTypes.string,
-    contactPerson2Phone: PropTypes.string,
-    address: PropTypes.string,
-    additionalInfo: PropTypes.string,
-  }),
-  setStudents: PropTypes.func,
-  onClose: PropTypes.func,
+type Props = {
+  selectedStudent: Student;
+  setStudents: Dispatch<SetStateAction<Student[]>>;
+  onClose: () => void;
 };
 
 export default StudentCard;

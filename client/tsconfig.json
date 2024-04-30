@@ -36,7 +36,7 @@
     "**/*.tsx",
     "src/__tests__/App.spec.js",
     "src/App.jsx",
-    "src/components/StudentCard/index.jsx"
+    "src/components/StudentCard/index.tsx"
   ],
   "exclude": ["node_modules", "dist", "build", "coverage", "public"],
   "references": [{ "path": "./tsconfig.node.json" }]
