@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent } from 'react';
 
-import { Student, Route } from '../../types/index';
 import RouteInfoDisplay from '@components/RouteInfoDisplay/';
+import { Student, Route } from '@src/types/index';
 import styles from './index.module.css';
 
 function DropdownListRoutes ({

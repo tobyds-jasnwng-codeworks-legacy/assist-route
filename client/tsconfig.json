@@ -31,13 +31,7 @@
     },
     "types": ["jest", "node", "vitest/globals"]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "src/__tests__/App.spec.js",
-    "src/App.jsx",
-    "src/components/StudentCard/index.tsx"
-  ],
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "dist", "build", "coverage", "public"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

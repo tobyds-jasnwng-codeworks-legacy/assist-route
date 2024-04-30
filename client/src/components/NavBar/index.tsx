@@ -1,4 +1,5 @@
 import { MouseEventHandler } from 'react';
+
 import styles from './index.module.css';
 
 function NavBar ({ toggleStudentsList }: Props) {

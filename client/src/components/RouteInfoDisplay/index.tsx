@@ -1,9 +1,10 @@
-import styles from './RouteInfoDisplay.module.css';
+import { useContext, MouseEvent } from 'react';
 import { TbBusStop } from 'react-icons/tb';
 import { PiStudentDuotone } from 'react-icons/pi';
-import { useContext, MouseEvent } from 'react';
-import { Context } from '../../App';
-import { Student, Route } from '../../types/index';
+
+import { Context } from '@src/App';
+import { Student, Route } from '@src/types/index';
+import styles from './index.module.css';
 
 function RouteInfoDisplay ({
   routeInfo,

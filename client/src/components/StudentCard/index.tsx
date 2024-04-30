@@ -3,8 +3,8 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 
 import { Context } from '@src/App';
 import { deleteStudent } from '@services/ApiServices';
-import styles from './index.module.css';
 import { Student } from '@src/types/index';
+import styles from './index.module.css';
 
 function StudentCard ({ setStudents, selectedStudent, onClose }: Props) {
   const { students }: { students: Array<Student> } = useContext(Context);

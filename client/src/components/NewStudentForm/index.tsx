@@ -3,7 +3,7 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 import { addStudent } from '@services/ApiServices';
 import { useContext, ChangeEvent, FormEvent } from 'react';
 import { Context } from '../../App';
-import styles from './NewStudentForm.module.css';
+import styles from './index.module.css';
 import { Route, Student, Stop } from '../../types/index';
 
 function NewStudentForm ({ routes, onClose, setStudents }: Props) {

@@ -3,7 +3,7 @@ import { PiStudentDuotone } from 'react-icons/pi';
 import { Dispatch, MouseEvent, SetStateAction, useContext } from 'react';
 
 import { Context } from '@src/App';
-import { Student } from '../../types/index';
+import { Student } from '@src/types/index';
 import styles from './index.module.css';
 
 function AllStudentsList ({
