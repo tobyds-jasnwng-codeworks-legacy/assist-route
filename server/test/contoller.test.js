@@ -33,20 +33,20 @@ describe('User Endpoints', () => {
     expect(res.body[0]).toEqual(expect.objectContaining(seedData[0]));
     expect(res.body[1]).toEqual(expect.objectContaining(seedData[1]));
     expect(res.body[2]).toEqual(expect.objectContaining(seedData[2]));
+  });
+
+  it('POST /students should return a new student', async () => {
+    const res = await request.post('/students').send(newData);
+    expect(res.status).toEqual(201);
+    expect(res.type).toEqual(expect.stringContaining('json'));
+    expect(res.body).toEqual(expect.objectContaining(newData));
   })
 
-  // it('POST /students should return a new student', async () => {
-  //   const res = await request.post('/students').send(newData);
-  //   expect(res.status).toEqual(201);
-  //   expect(res.type).toEqual(expect.stringContaining('json'));
-  //   expect(res.body).toEqual(expect.objectContaining(newData));
-  // })
-
-  // it('POST /students should add a new student to the db', async () => {
-  //   const res = await request.post('/students').send(newData);
-  //   const dbRes = await db.Student.findOne({ where: { firstName: newData.firstName } });
-  //   expect(dbRes.dataValues).toEqual(expect.objectContaining(newData));
-  // })
+  it('POST /students should add a new student to the db', async () => {
+    const res = await request.post('/students').send(newData);
+    const dbRes = await db.Student.findOne({ where: { firstName: newData.firstName } });
+    expect(dbRes.dataValues).toEqual(expect.objectContaining(newData));
+  })
 
   // it('DELETE /students/:id should delete a student from the db', async () => {
   //   const id = 1;
