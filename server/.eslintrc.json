@@ -29,5 +29,13 @@
     "space-before-function-paren": ["error", "always"],
     "indent": ["error", 2]
   },
-  "ignorePatterns": ["*.ejs"]
+  "ignorePatterns": ["*.ejs"],
+  "overrides": [{
+    "files": "**/*.test.js",
+    "rules": {
+      "no-undef":"off",
+      "node/no-unpublished-require": "off",
+      "node/no-missing-require": "off"
+    }
+  }]
 }
