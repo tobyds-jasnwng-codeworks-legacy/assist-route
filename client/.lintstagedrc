@@ -1,5 +1,9 @@
 {
-  "*.{js,jsx}": ["prettier-eslint --write ", "eslint"],
-  "*.{ts,tsx}": ["prettier-eslint --write ", "eslint", "tsc-files --noEmit"],
+  "src/**/*.{js,jsx}": ["prettier-eslint --write ", "eslint"],
+  "src/**/*.{ts,tsx}": [
+    "prettier-eslint --write ",
+    "eslint",
+    "bash -c tsc --noEmit"
+  ],
   "*.{json,md,mdx,yml}": ["prettier --write"]
 }
