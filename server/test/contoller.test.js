@@ -40,19 +40,21 @@ describe('User Endpoints', () => {
     expect(res.status).toEqual(201);
     expect(res.type).toEqual(expect.stringContaining('json'));
     expect(res.body).toEqual(expect.objectContaining(newData));
-  })
+  });
 
   it('POST /students should add a new student to the db', async () => {
     const res = await request.post('/students').send(newData);
-    const dbRes = await db.Student.findOne({ where: { firstName: newData.firstName } });
+    const dbRes = await db.Student.findOne({
+      where: { firstName: newData.firstName },
+    });
     expect(dbRes.dataValues).toEqual(expect.objectContaining(newData));
-  })
+  });
 
-  // it('DELETE /students/:id should delete a student from the db', async () => {
-  //   const id = 1;
-  //   const res = await request.delete(`/students/${id}`).send(newData);
-  //   const dbRes = await db.Student.findOne({ where: { id: id } });
-  //   expect(res.status).toEqual(204);
-  //   expect(dbRes).toEqual(null);
-  // })
+  it('DELETE /students/:id should delete a student from the db', async () => {
+    const id = 1;
+    const res = await request.delete(`/students/${id}`).send(newData);
+    const dbRes = await db.Student.findOne({ where: { id: id } });
+    expect(res.status).toEqual(204);
+    expect(dbRes).toEqual(null);
+  })
 });
