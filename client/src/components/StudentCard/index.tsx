@@ -3,14 +3,14 @@ import { AiFillCloseCircle } from 'react-icons/ai';
 
 import { Context } from '@src/App';
 import { deleteStudent } from '@services/ApiServices';
-import { Student } from '@src/types/index';
+import { Student, ContextType } from '@src/types/index';
 import styles from './index.module.css';
 
 function StudentCard ({ setStudents, selectedStudent, onClose }: Props) {
-  const { students }: { students: Array<Student> } = useContext(Context);
+  const { students }: ContextType = useContext(Context);
 
   const studentData = students.filter(
-    (student) => student.id === selectedStudent.id
+    (student) => student.id === parseInt(selectedStudent as string)
   )[0];
   const dataToRender = Object.entries(studentData);
   const dataToRenderShort = dataToRender.slice(1);
@@ -45,7 +45,7 @@ function StudentCard ({ setStudents, selectedStudent, onClose }: Props) {
     <div className='listContainer'>
       <AiFillCloseCircle
         className='close'
-        onClick={onClose}
+        onClick={() => onClose()}
         aria-label='Close'
       />
       <div className={styles.fieldsList}>{studentInfoElements}</div>
@@ -57,7 +57,7 @@ function StudentCard ({ setStudents, selectedStudent, onClose }: Props) {
 }
 
 type Props = {
-  selectedStudent: Student;
+  selectedStudent: string | null;
   setStudents: Dispatch<SetStateAction<Student[]>>;
   onClose: () => void;
 };

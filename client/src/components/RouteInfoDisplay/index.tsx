@@ -1,9 +1,9 @@
-import { useContext, MouseEvent } from 'react';
+import { useContext, MouseEvent, Dispatch, SetStateAction } from 'react';
 import { TbBusStop } from 'react-icons/tb';
 import { PiStudentDuotone } from 'react-icons/pi';
 
 import { Context } from '@src/App';
-import { Student, Route } from '@src/types/index';
+import { Student, Route, ContextType } from '@src/types/index';
 import styles from './index.module.css';
 
 function RouteInfoDisplay ({
@@ -13,7 +13,7 @@ function RouteInfoDisplay ({
   setSelectedStudent,
   setShowStudentCard,
 }: Props) {
-  const { students }: { students: Array<Student> } = useContext(Context);
+  const { students }: ContextType = useContext(Context);
 
   function handleSelectStop (event: MouseEvent<HTMLButtonElement>) {
     const { value } = event.target as HTMLButtonElement;
@@ -92,8 +92,9 @@ type Props = {
   routeInfo: Route[];
   setStopStudents: (stopStudent: Array<Student>) => void;
   stopStudents: Student[];
-  setSelectedStudent: (selectedStudent: string) => void;
-  setShowStudentCard: (showStudentCard: boolean) => void;
+  setSelectedStudent: Dispatch<SetStateAction<string | null>>;
+  setShowStudentCard: Dispatch<SetStateAction<boolean>>;
+  onClose: (value: SetStateAction<boolean>) => void;
 };
 
 export default RouteInfoDisplay;
