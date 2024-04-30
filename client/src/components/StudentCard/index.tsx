@@ -1,15 +1,16 @@
-import styles from './StudentCard.module.css';
+import { Dispatch, SetStateAction, useContext } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
-import { deleteStudent } from '@services/ApiServices';
-import { useContext } from 'react';
-import { Context } from '../../App';
-import PropTypes from 'prop-types';
 
-function StudentCard ({ setStudents, selectedStudent, onClose }) {
-  const { students } = useContext(Context);
+import { Context } from '@src/App';
+import { deleteStudent } from '@services/ApiServices';
+import { Student, ContextType } from '@src/types/index';
+import styles from './index.module.css';
+
+function StudentCard ({ setStudents, selectedStudent, onClose }: Props) {
+  const { students }: ContextType = useContext(Context);
 
   const studentData = students.filter(
-    (student) => student.id === parseInt(selectedStudent)
+    (student) => student.id === parseInt(selectedStudent as string)
   )[0];
   const dataToRender = Object.entries(studentData);
   const dataToRenderShort = dataToRender.slice(1);
@@ -23,7 +24,7 @@ function StudentCard ({ setStudents, selectedStudent, onClose }) {
     </div>
   ));
 
-  function camelToText (camelCase) {
+  function camelToText (camelCase: string): string {
     return camelCase.replace(/([A-Z])/g, ' $1').toLowerCase();
   }
 
@@ -31,8 +32,10 @@ function StudentCard ({ setStudents, selectedStudent, onClose }) {
     await deleteStudent(studentData.id);
 
     // delete student from list
-    setStudents((oldList) => {
-      const newList = oldList.filter((item) => item.id !== studentData.id);
+    setStudents((oldList: Student[]) => {
+      const newList = oldList.filter(
+        (item: Student) => item.id !== studentData.id
+      );
       return newList;
     });
     onClose();
@@ -42,7 +45,7 @@ function StudentCard ({ setStudents, selectedStudent, onClose }) {
     <div className='listContainer'>
       <AiFillCloseCircle
         className='close'
-        onClick={onClose}
+        onClick={() => onClose()}
         aria-label='Close'
       />
       <div className={styles.fieldsList}>{studentInfoElements}</div>
@@ -53,23 +56,10 @@ function StudentCard ({ setStudents, selectedStudent, onClose }) {
   );
 }
 
-StudentCard.propTypes = {
-  selectedStudent: PropTypes.shape({
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    morningRoute: PropTypes.string,
-    morningStop: PropTypes.string,
-    eveningRoute: PropTypes.string,
-    eveningStop: PropTypes.string,
-    contactPerson1: PropTypes.string,
-    contactPerson1Phone: PropTypes.string,
-    contactPerson2: PropTypes.string,
-    contactPerson2Phone: PropTypes.string,
-    address: PropTypes.string,
-    additionalInfo: PropTypes.string,
-  }),
-  setStudents: PropTypes.func,
-  onClose: PropTypes.func,
+type Props = {
+  selectedStudent: string | null;
+  setStudents: Dispatch<SetStateAction<Student[]>>;
+  onClose: () => void;
 };
 
 export default StudentCard;

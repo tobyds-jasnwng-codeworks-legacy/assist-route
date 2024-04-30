@@ -1,21 +1,23 @@
 import { useEffect, useState, createContext } from 'react';
-import './App.css';
-import NavBar from '@components/NavBar/NavBar';
-import DropdownListRoutes from '@components/DropdownListRoutes/DropdownListRoutes';
-import AllStudentsList from '@components/AllStudentsList/AllStudentsList';
-import NewStudentForm from '@components/NewStudentForm/NewStudentForm';
-import StudentCard from '@components/StudentCard/StudentCard';
-import { initFetchData } from '@services/ApiServices';
 
-export const Context = createContext();
+import NavBar from '@components/NavBar';
+import DropdownListRoutes from '@components/DropdownListRoutes';
+import AllStudentsList from '@components/AllStudentsList';
+import NewStudentForm from '@components/NewStudentForm';
+import StudentCard from '@components/StudentCard';
+import { initFetchData } from '@services/ApiServices';
+import { ContextType, Student, Route } from '@src/types/index';
+import './App.css';
+
+export const Context = createContext<ContextType>({ students: [] });
 
 function App () {
-  const [routes, setRoutes] = useState([]); // routes data
-  const [students, setStudents] = useState([]); // students data
+  const [routes, setRoutes] = useState<Array<Route>>([]); // routes data
+  const [students, setStudents] = useState<Array<Student>>([]); // students data
   const [showStudents, setShowStudents] = useState(false); // condition to show the list of students on button click
   const [showNewStudentForm, setShowNewStudentForm] = useState(false); // condition to show the form for adding new student on button click
   const [showStudentCard, setShowStudentCard] = useState(false); // condition to show the card with complete information about student
-  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [selectedStudent, setSelectedStudent] = useState<string | null>(null);
 
   // Fetching data on init
   useEffect(() => {

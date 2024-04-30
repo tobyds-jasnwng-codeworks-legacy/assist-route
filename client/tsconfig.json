@@ -21,13 +21,17 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
+      "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
+      "@data/*": ["./src/data/*"],
+      "@fonts/*": ["./src/assets/fonts/*"],
       "@services/*": ["./src/services/*"],
-      "@data/*": ["./src/data/*"]
+      "@src/*": ["./src/*"],
+      "@types/*": ["./src/types/*"]
     },
     "types": ["jest", "node", "vitest/globals"]
   },
-  "include": ["**/*.ts", "**/*.tsx", "src/__tests__/App.spec.js"],
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules", "dist", "build", "coverage", "public"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
