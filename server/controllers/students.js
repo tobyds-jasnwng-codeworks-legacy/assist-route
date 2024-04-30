@@ -1,7 +1,7 @@
 'use strict';
 const db = require('../models/index');
 
-async function getAllStudents(req, res) {
+async function getAllStudents (req, res) {
   try {
     const students = await db.Student.findAll();
     res.status(200).json(students); // request succeeded
@@ -11,7 +11,7 @@ async function getAllStudents(req, res) {
   }
 }
 
-async function addStudent(req, res) {
+async function addStudent (req, res) {
   try {
     const newStudent = await db.Student.create(req.body);
     res.status(201).json(newStudent); // request fulfilled, new resource created.
@@ -23,7 +23,7 @@ async function addStudent(req, res) {
   }
 }
 
-async function deleteStudent(req, res) {
+async function deleteStudent (req, res) {
   try {
     const studentId = req.params.id;
     await db.Student.destroy({
