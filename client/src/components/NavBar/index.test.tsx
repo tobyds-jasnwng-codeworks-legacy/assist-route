@@ -1,6 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import NavBar from './NavBar';
+import NavBar from '.';
 
 describe('NavBar', () => {
   it('should render the project name', () => {

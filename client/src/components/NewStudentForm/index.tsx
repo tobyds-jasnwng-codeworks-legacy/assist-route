@@ -5,7 +5,6 @@ import { useContext, ChangeEvent, FormEvent } from 'react';
 import { Context } from '../../App';
 import styles from './NewStudentForm.module.css';
 import { Route, Student, Stop } from '../../types/index';
-// import PropTypes from 'prop-types';
 
 function NewStudentForm ({ routes, onClose, setStudents }: Props) {
   const { students }: { students: Array<Student> } = useContext(Context);

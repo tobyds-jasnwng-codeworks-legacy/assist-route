@@ -1,9 +1,10 @@
-import styles from './StudentCard.module.css';
-import { AiFillCloseCircle } from 'react-icons/ai';
-import { deleteStudent } from '@services/ApiServices';
 import { useContext } from 'react';
-import { Context } from '../../App';
+import { AiFillCloseCircle } from 'react-icons/ai';
 import PropTypes from 'prop-types';
+
+import { Context } from '@src/App';
+import { deleteStudent } from '@services/ApiServices';
+import styles from './index.module.css';
 
 function StudentCard ({ setStudents, selectedStudent, onClose }) {
   const { students } = useContext(Context);
