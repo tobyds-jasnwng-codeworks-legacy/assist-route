@@ -7,12 +7,14 @@ require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'http://localhost';
 
+let server;
+
 describe('User Endpoints', () => {
   const request = supertest(app);
 
   beforeAll(async () => {
     await db.sequelize.sync();
-    app.listen(PORT, () => {
+    server = app.listen(PORT, () => {
       console.log(`Server running for testing at ${HOST}:${PORT}`);
     });
     seedData.forEach((student) => {
@@ -23,11 +25,11 @@ describe('User Endpoints', () => {
   afterAll(async () => {
     await db.sequelize.drop();
     await db.sequelize.close();
+    server.close();
   });
 
   it('GET /students should show all students', async () => {
     const res = await request.get('/students');
-    console.log('GET', res.body);
     expect(res.status).toEqual(200);
     expect(res.type).toEqual(expect.stringContaining('json'));
     expect(res.body[0]).toEqual(expect.objectContaining(seedData[0]));

@@ -11,7 +11,7 @@ const db = {};
 const config = {
   host: process.env.PGHOST,
   dialect: 'postgres',
-  logging: process.env.NODE_ENV === 'production' ? false : true,
+  logging: false,
 };
 
 const sequelize = new Sequelize(
