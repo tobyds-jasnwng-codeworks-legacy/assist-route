@@ -56,5 +56,5 @@ describe('User Endpoints', () => {
     const dbRes = await db.Student.findOne({ where: { id: id } });
     expect(res.status).toEqual(204);
     expect(dbRes).toEqual(null);
-  })
+  });
 });
