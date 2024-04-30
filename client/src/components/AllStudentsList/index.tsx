@@ -1,9 +1,10 @@
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { PiStudentDuotone } from 'react-icons/pi';
-import { MouseEvent, useContext } from 'react';
-import { Context } from '../../App';
-import styles from './AllStudentsList.module.css';
+import { Dispatch, MouseEvent, SetStateAction, useContext } from 'react';
+
+import { Context } from '@src/App';
 import { Student } from '../../types/index';
+import styles from './index.module.css';
 
 function AllStudentsList ({
   setSelectedStudent,
@@ -61,8 +62,8 @@ function AllStudentsList ({
 }
 
 type Props = {
-  setSelectedStudent: (selectedStudent: string) => void;
-  setShowStudentCard: (showStudentCard: boolean) => void;
+  setSelectedStudent: Dispatch<SetStateAction<string | null>>;
+  setShowStudentCard: Dispatch<SetStateAction<boolean | null>>;
   onClose: () => void;
   onSubmit: () => void;
 };

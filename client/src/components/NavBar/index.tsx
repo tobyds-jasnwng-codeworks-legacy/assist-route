@@ -1,4 +1,5 @@
-import styles from './NavBar.module.css';
+import { MouseEventHandler } from 'react';
+import styles from './index.module.css';
 
 function NavBar ({ toggleStudentsList }: Props) {
   return (
@@ -17,7 +18,7 @@ function NavBar ({ toggleStudentsList }: Props) {
 }
 
 type Props = {
-  toggleStudentsList: () => void;
+  toggleStudentsList: MouseEventHandler<HTMLButtonElement>;
 };
 
 export default NavBar;
