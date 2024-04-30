@@ -18,13 +18,13 @@ export type Student = {
 };
 
 export type Stop = {
-  id: number, 
-  name: string,
-}
+  id: number;
+  name: string;
+};
 
 export type Route = {
-  id: string,
-  name: string,
-  stops: Stop[],
-  type: string,
-}
+  id: string;
+  name: string;
+  stops: Stop[];
+  type: string;
+};

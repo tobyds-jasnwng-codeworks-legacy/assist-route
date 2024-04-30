@@ -12,10 +12,10 @@ function RouteInfoDisplay ({
   setSelectedStudent,
   setShowStudentCard,
 }: Props) {
-  const { students }: { students: Array<Student> }  = useContext(Context);
+  const { students }: { students: Array<Student> } = useContext(Context);
 
   function handleSelectStop (event: MouseEvent<HTMLButtonElement>) {
-    const { value } = (event.target as HTMLButtonElement);
+    const { value } = event.target as HTMLButtonElement;
     setStopStudents(
       students.filter(
         (student: Student) =>
@@ -28,13 +28,13 @@ function RouteInfoDisplay ({
   }
 
   function handleSelectStudent (e: MouseEvent<HTMLButtonElement>) {
-    const { value } = (e.target as HTMLButtonElement);
+    const { value } = e.target as HTMLButtonElement;
     setSelectedStudent(value);
     setShowStudentCard(true);
   }
 
   return (
-    <div id='routeDisplay'  className={styles.routeDisplay}>
+    <div id='routeDisplay' className={styles.routeDisplay}>
       <h3>
         {routeInfo[0].name} {routeInfo[0].type}{' '}
       </h3>
@@ -57,7 +57,10 @@ function RouteInfoDisplay ({
             </>
           ))}
         </div>
-        <div id='stopStudentsList' className={`listContainer ${styles.stopStudentsList}`}>
+        <div
+          id='stopStudentsList'
+          className={`listContainer ${styles.stopStudentsList}`}
+        >
           <p className='italicThin'>
             Click on the user to see complete information
           </p>
@@ -85,12 +88,11 @@ function RouteInfoDisplay ({
 }
 
 type Props = {
-  routeInfo: Route[],
-  setStopStudents: ()=>void,
-  stopStudents: Student[],
-  setSelectedStudent: ()=>void,
-  setShowStudentCard: ()=>void,
-
-}
+  routeInfo: Route[];
+  setStopStudents: (stopStudent: Array<Student>) => void;
+  stopStudents: Student[];
+  setSelectedStudent: (selectedStudent: string) => void;
+  setShowStudentCard: (showStudentCard: boolean) => void;
+};
 
 export default RouteInfoDisplay;

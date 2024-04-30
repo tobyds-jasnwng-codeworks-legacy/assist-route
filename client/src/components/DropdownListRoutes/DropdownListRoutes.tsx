@@ -7,7 +7,6 @@ function DropdownListRoutes ({
   routes,
   setSelectedStudent,
   setShowStudentCard,
-  onClose,
 }: Props) {
   const [selectedRoute, setSelectedRoute] = useState<string>('');
   const [routeInfo, setRouteInfo] = useState<Route[]>();
@@ -32,9 +31,9 @@ function DropdownListRoutes ({
   }, [selectedRoute, routes]);
 
   return (
-    <div id="routeInfoContainer" className={styles.routeInfoContainer}>
+    <div id='routeInfoContainer' className={styles.routeInfoContainer}>
       <select
-        id="dropdownRoutes"
+        id='dropdownRoutes'
         className={styles.dropdownRoutes}
         value={selectedRoute}
         onChange={handleSelectChange}
@@ -55,7 +54,6 @@ function DropdownListRoutes ({
           setStopStudents={setStopStudents}
           setSelectedStudent={setSelectedStudent}
           setShowStudentCard={setShowStudentCard}
-          onClose={onClose}
         />
       )}
     </div>
@@ -63,10 +61,10 @@ function DropdownListRoutes ({
 }
 
 type Props = {
-  routes: Route[],
-  setSelectedStudent: ()=>null,
-  setShowStudentCard: ()=>null,
-  onClose: ()=>null,
-}
+  routes: Route[];
+  setSelectedStudent: () => null;
+  setShowStudentCard: () => null;
+  onClose: () => null;
+};
 
 export default DropdownListRoutes;
