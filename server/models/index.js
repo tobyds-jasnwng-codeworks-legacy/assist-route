@@ -15,7 +15,7 @@ const config = {
 };
 
 const sequelize = new Sequelize(
-  process.env.PGDATABASE,
+  process.env.NODE_ENV === 'test' ? process.env.PGDATABASE_TEST : process.env.PGDATABASE,
   process.env.PGUSER,
   process.env.PGPASSWORD,
   config

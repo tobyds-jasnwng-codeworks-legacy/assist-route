@@ -1,18 +1,11 @@
 'use strict';
-const express = require('express');
-const cors = require('cors');
-const router = require('./router.js');
+const app = require('./app.js');
 const db = require('./models/index.js');
-require('dotenv').config();
 
-const app = express();
+require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'http://localhost';
-
-app.use(cors());
-app.use(express.json());
-app.use(router);
 
 // Synchronize the model with the database before connecting on port
 (async () => {
