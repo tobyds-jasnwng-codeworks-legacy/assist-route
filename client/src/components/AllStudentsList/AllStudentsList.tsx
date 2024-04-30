@@ -61,8 +61,8 @@ function AllStudentsList ({
 }
 
 type Props = {
-  setSelectedStudent: () => void;
-  setShowStudentCard: () => void;
+  setSelectedStudent: (selectedStudent: string) => void;
+  setShowStudentCard: (showStudentCard: boolean) => void;
   onClose: () => void;
   onSubmit: () => void;
 };

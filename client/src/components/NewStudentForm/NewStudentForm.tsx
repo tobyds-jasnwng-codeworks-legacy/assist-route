@@ -7,10 +7,14 @@ import styles from './NewStudentForm.module.css';
 import { Route, Student, Stop } from '../../types/index';
 // import PropTypes from 'prop-types';
 
-function NewStudentForm({ routes, onClose, setStudents }: Props) {
+function NewStudentForm ({ routes, onClose, setStudents }: Props) {
   const { students }: { students: Array<Student> } = useContext(Context);
-  const morningRoutes: Route[] = routes.filter((route) => route.type === 'morning');
-  const eveningRoutes: Route[] = routes.filter((route) => route.type === 'evening');
+  const morningRoutes: Route[] = routes.filter(
+    (route) => route.type === 'morning'
+  );
+  const eveningRoutes: Route[] = routes.filter(
+    (route) => route.type === 'evening'
+  );
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -27,7 +31,9 @@ function NewStudentForm({ routes, onClose, setStudents }: Props) {
     additionalInfo: '',
   });
 
-  function handleChange(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
+  function handleChange (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
+  ) {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   }
@@ -63,13 +69,20 @@ function NewStudentForm({ routes, onClose, setStudents }: Props) {
   }
 
   return (
-    <div id='newStudentFormContainer' className={styles.newStudentFormContainer}>
+    <div
+      id='newStudentFormContainer'
+      className={styles.newStudentFormContainer}
+    >
       <AiFillCloseCircle
         className='close'
         onClick={onClose}
         aria-label='Close'
       />
-      <form id='NewStudentForm' className={`form ${styles.NewStudentForm}`} onSubmit={handleSubmit}>
+      <form
+        id='NewStudentForm'
+        className={`form ${styles.NewStudentForm}`}
+        onSubmit={handleSubmit}
+      >
         <label htmlFor='firstName' className='formLabel'>
           Name *
         </label>
@@ -144,7 +157,7 @@ function NewStudentForm({ routes, onClose, setStudents }: Props) {
             Choose your route...
           </option>
           {eveningRoutes.map((route: Route) => (
-            <option key={route.id} name="eveningRoute" value={route.name}>
+            <option key={route.id} value={route.name}>
               {route.name}
             </option>
           ))}
@@ -227,7 +240,11 @@ function NewStudentForm({ routes, onClose, setStudents }: Props) {
           placeholder='Insert studen´s home address...'
           onChange={handleChange}
         ></input>
-        <button id='SubmitNewStudent' className={styles.SubmitNewStudent} type='submit'>
+        <button
+          id='SubmitNewStudent'
+          className={styles.SubmitNewStudent}
+          type='submit'
+        >
           SUBMIT
         </button>
       </form>
@@ -236,9 +253,9 @@ function NewStudentForm({ routes, onClose, setStudents }: Props) {
 }
 
 type Props = {
-  routes: Route[],
-  onClose: () => void,
-  setStudents: ()=>void,
-}
+  routes: Route[];
+  onClose: () => void;
+  setStudents: (students: Array<Student>) => void;
+};
 
 export default NewStudentForm;
