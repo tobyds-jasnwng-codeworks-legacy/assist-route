@@ -29,6 +29,7 @@ function AllStudentsList ({
       />
       <button
         id='addNewStudentButton'
+        data-testid='student-button'
         className={styles.addNewStudentButton}
         onClick={() => {
           onClose();
@@ -37,7 +38,11 @@ function AllStudentsList ({
       >
         Add new student
       </button>
-      <div id='allStudentsList' className={`list ${styles.allStudentsList}`}>
+      <div
+        id='allStudentsList'
+        data-testid='student-list'
+        className={`list ${styles.allStudentsList}`}
+      >
         {students.map((student: Student) => (
           <>
             <PiStudentDuotone />
