@@ -41,7 +41,7 @@ function App () {
 
   return (
     <>
-      {/* <SelectProfile/> */}
+      <SelectProfile/>
       <SelectRoute />
       
       {/* <Context.Provider value={{ students }}>
