@@ -19,9 +19,8 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
       },
     },
-    stopOrder: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
+    relationToStudent: {
+      type: DataTypes.STRING,
     },
   });
 
