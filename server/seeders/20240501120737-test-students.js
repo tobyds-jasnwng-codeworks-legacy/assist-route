@@ -3,7 +3,7 @@
 const students = require('../data/students.js');
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up (queryInterface) {
     await queryInterface.bulkInsert(
       'Students',
       students.map((student) =>
@@ -15,7 +15,7 @@ module.exports = {
     );
   },
 
-  async down (queryInterface, Sequelize) {
+  async down (queryInterface) {
     return await queryInterface.bulkDelete('Students', null, {});
   },
 };
