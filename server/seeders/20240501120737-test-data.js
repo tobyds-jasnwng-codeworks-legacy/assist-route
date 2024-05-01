@@ -3,7 +3,7 @@
 
 const students = require('../data/students.js');
 const contacts = require('../data/contacts.js');
-const sequelize = require('../models');
+const stops = require('../data/stops.js');
 
 module.exports = {
   async up (queryInterface) {
@@ -52,30 +52,45 @@ module.exports = {
         });
       })
     );
+    await queryInterface.bulkInsert(
+      'Stops',
+      stops.map((stop) => ({
+        ...stop,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      }))
+    );
   },
 
   async down (queryInterface) {
-    await queryInterface.bulkDelete('StudentContacts', null, {
-      truncate: true,
-      cascade: true,
-    });
-    await queryInterface.bulkDelete('Contacts', null, {
-      truncate: true,
-      cascade: true,
-    });
-    await queryInterface.bulkDelete('Students', null, {
-      truncate: true,
-      cascade: true,
-    });
+    await queryInterface.bulkDelete('StudentContacts', null, {});
+    await queryInterface.bulkDelete('Contacts', null, {});
+    await queryInterface.bulkDelete('Students', null, {});
+    await queryInterface.bulkDelete('Stops', null, {});
+    await queryInterface.bulkDelete('RouteStops', null, {});
+    await queryInterface.bulkDelete('Routes', null, {});
+    await queryInterface.bulkDelete('StudentStopsRecurring', null, {});
     // Reset Auto Increment IDs
+    await queryInterface.sequelize.query(
+      'ALTER SEQUENCE "StudentContacts_id_seq" RESTART WITH 1'
+    );
     await queryInterface.sequelize.query(
       'ALTER SEQUENCE "Contacts_id_seq" RESTART WITH 1'
     );
     await queryInterface.sequelize.query(
       'ALTER SEQUENCE "Students_id_seq" RESTART WITH 1'
     );
+    await queryInterface.sequelize.query(
+      'ALTER SEQUENCE "Stops_id_seq" RESTART WITH 1'
+    );
+    await queryInterface.sequelize.query(
+      'ALTER SEQUENCE "RouteStops_id_seq" RESTART WITH 1'
+    );
+    await queryInterface.sequelize.query(
+      'ALTER SEQUENCE "Routes_id_seq" RESTART WITH 1'
+    );
     return await queryInterface.sequelize.query(
-      'ALTER SEQUENCE "StudentContacts_id_seq" RESTART WITH 1'
+      'ALTER SEQUENCE "StudentRoutesRecurring_id_seq" RESTART WITH 1'
     );
   },
 };
