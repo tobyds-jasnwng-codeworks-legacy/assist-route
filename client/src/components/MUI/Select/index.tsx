@@ -9,16 +9,17 @@ function MuiSelect ({ sxCustom, placeholder }) {
   const sxDefault = {
     borderRadius: 5,
     '&:hover': {
-      border: 2,
+      border: 1,
       fontWeight: 600,
     }
   };
-
+  
   const sxForm = { ...sxDefault, ...sxCustom };
-
+  
   const sxInput = {
     fontFamily: 'Josefin Sans',
     fontSize: 24,
+    align: 'right',
   };
 
   function handleChange (event: SelectChangeEvent) {
