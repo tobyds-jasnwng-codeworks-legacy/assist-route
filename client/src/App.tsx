@@ -5,9 +5,19 @@ import DropdownListRoutes from '@components/DropdownListRoutes';
 import AllStudentsList from '@components/AllStudentsList';
 import NewStudentForm from '@components/NewStudentForm';
 import StudentCard from '@components/StudentCard';
+import SelectProfile from '@components/SelectProfile';
+import SelectRoute from '@components/SelectRoute'
+
 import { initFetchData } from '@services/ApiServices';
 import { ContextType, Student, Route } from '@src/types/index';
 import './App.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { styled, createTheme, ThemeProvider } from '@mui/system';
+import CustomButton from '@components/CustomButton';
+
 
 export const Context = createContext<ContextType>({ students: [] });
 
@@ -31,7 +41,9 @@ function App () {
 
   return (
     <>
-      <Context.Provider value={{ students }}>
+      <SelectRoute />
+      
+      {/* <Context.Provider value={{ students }}>
         <NavBar toggleStudentsList={toggleStudentsList} />
         <main>
           <DropdownListRoutes
@@ -69,7 +81,7 @@ function App () {
             </div>
           )}
         </main>
-      </Context.Provider>
+      </Context.Provider> */}
     </>
   );
 }
