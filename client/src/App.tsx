@@ -9,6 +9,8 @@ import SelectProfile from '@components/SelectProfile';
 import SelectRoute from '@components/SelectRoute';
 import RoutePage from '@components/RoutePage';
 import StudentList from '@components/StudentList';
+import SelectStudent from '@components/SelectStudent';
+import AddRider from '@components/AddRider';
 
 import { initFetchData } from '@services/ApiServices';
 import { ContextType, Student, Route } from '@src/types/index';
@@ -45,8 +47,10 @@ function App () {
     <>
       {/* <SelectProfile/>
       <SelectRoute />
-      <RoutePage /> */}
+      <RoutePage /> 
       <StudentList/>  
+      <SelectStudent /> */}
+      <AddRider />
       
       {/* <Context.Provider value={{ students }}>
         <NavBar toggleStudentsList={toggleStudentsList} />
