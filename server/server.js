@@ -9,7 +9,7 @@ const HOST = process.env.HOST || 'http://localhost';
 
 // Synchronize the model with the database before connecting on port
 (async () => {
-  await db.sequelize.sync();
+  await db.sequelize.sync({ force: true });
   console.log('Database & tables created!');
   app.listen(PORT, () => {
     console.log(`Server running at ${HOST}:${PORT}`);

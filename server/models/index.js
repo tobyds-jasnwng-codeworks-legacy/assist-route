@@ -26,7 +26,7 @@ const sequelize = new Sequelize(
 const files = fs.readdirSync(__dirname);
 
 for (const file of files) {
-  if (file !== 'index.js') {
+  if (file !== 'index.js' && file !== 'associations.js') {
     const model = require(path.join(__dirname, file))(
       sequelize,
       Sequelize.DataTypes
@@ -34,6 +34,8 @@ for (const file of files) {
     db[model.name] = model;
   }
 }
+
+require('./associations.js')(db);
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
