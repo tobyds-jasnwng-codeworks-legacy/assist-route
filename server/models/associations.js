@@ -1,4 +1,5 @@
 module.exports = (db) => {
+  // RouteStop
   db.Route.belongsToMany(db.Stop, {
     through: db.RouteStop,
     foreignKey: 'RouteId',
@@ -7,6 +8,8 @@ module.exports = (db) => {
     through: db.RouteStop,
     foreignKey: 'StopId',
   });
+
+  // StudentContact
   db.Student.belongsToMany(db.Contact, {
     through: db.StudentContact,
     foreignKey: 'StudentId',
@@ -15,6 +18,8 @@ module.exports = (db) => {
     through: db.StudentContact,
     foreignKey: 'ContactId',
   });
+
+  // StudentRoutesRecurring
   db.Student.belongsToMany(db.Route, {
     through: db.StudentRoutesRecurring,
     foreignKey: 'StudentId',
