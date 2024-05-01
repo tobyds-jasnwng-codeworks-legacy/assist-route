@@ -20,7 +20,6 @@ const sxSelect = {
   height: 60,
   backgroundColor: '#4dabf7',
   color: '#343a40',
-  
 };
 
 export default SelectRoute;

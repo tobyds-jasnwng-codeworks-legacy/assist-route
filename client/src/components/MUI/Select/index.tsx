@@ -7,7 +7,7 @@ function MuiSelect ({ sxCustom, placeholder }) {
   const [route, setRoute] = useState('');
 
   const sxDefault = {
-    borderRadius: 5,
+    // borderRadius: 5,
     '&:hover': {
       border: 1,
       fontWeight: 600,
@@ -28,7 +28,6 @@ function MuiSelect ({ sxCustom, placeholder }) {
 
   return (
     <>
-      
       <FormControl fullWidth sx={sxForm}>
         <InputLabel sx={sxInput}>{placeholder}</InputLabel>
         <Select
