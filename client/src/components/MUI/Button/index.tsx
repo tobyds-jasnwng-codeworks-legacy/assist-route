@@ -2,7 +2,7 @@
 import { Button } from '@mui/material';
 
 
-function CustomButton({ content, sxCustom }) {
+function MuiButton({ content, sxCustom }) {
   
 
   const sxDefault = {
@@ -22,4 +22,4 @@ function CustomButton({ content, sxCustom }) {
   );
 }
 
-export default CustomButton;
+export default MuiButton;
