@@ -30,9 +30,8 @@ const sxInput = {
   height: 50,
   width: 300,
   fontFamily: 'Josefin Sans',
-  fontSize: 20,
+  fontSize: 24,
   style: { textAlign: 'center' }
-  
 }
 
 const sxSelect = {
@@ -40,7 +39,6 @@ const sxSelect = {
   height: 50,
   backgroundColor: '#4dabf7',
   color: '#343a40',
-  fontSize: 20,
 };
 
 export default AddRider;
