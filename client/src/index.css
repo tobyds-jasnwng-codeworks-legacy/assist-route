@@ -1,9 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+:root {
+  --clr-background-100: #fff;
+  --clr-background-300: #e7f5ff;
+  /* --clr-background-500: #1e1e1e; */
+  --clr-primary-200: #e7f5ff;
+  --clr-primary-400: #a5d8ff;
+  --clr-primary-600: #4dabf7;
+  --clr-secondary-300: #eaddd7;
+  --clr-secondary-500: #262423;
+  --clr-text-white: #fff;
+  --clr-text-grey: #343a40;
+  --clr-text-black: #000;
+  /* --ff-primary: inter, sans-serif; */
+  /* --fs-400: 1rem;
+  --fs-500: 1.1em;
+  --fs-800: 1.5em;
+  --fs-850: 1.7em;
+  --fs-900: 2.3em; */
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Martel Sans', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
+
 /* @font-face {
   font-family: 'MartelSans';
   src: url('./assets/fonts/MartelSans-Black.ttf') format("tff"), 
@@ -25,3 +48,4 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
