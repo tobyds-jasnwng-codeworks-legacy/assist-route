@@ -1,5 +1,5 @@
 import styles from './index.module.css';
-import CustomButton from '@components/CustomButton';
+import MuiButton from '@components/MUI/Button';
 
 function SelectProfile () {
   return (
@@ -7,13 +7,14 @@ function SelectProfile () {
       <div className={styles.content}>
         <h1>please select your profile</h1>
         <div className={styles.buttonContainer}>
-          <CustomButton sxCustom={sxButton} content={"driver"} />
-          <CustomButton sxCustom={sxButton} content={"rider"} />
+          <MuiButton sxCustom={sxButton} content={"driver"} />
+          <MuiButton sxCustom={sxButton} content={"rider"} />
         </div>
       </div>
     </div>
   );
 }
+
 
 const sxButton = {
   width: 200,

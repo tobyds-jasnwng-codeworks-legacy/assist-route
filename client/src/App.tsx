@@ -6,7 +6,7 @@ import AllStudentsList from '@components/AllStudentsList';
 import NewStudentForm from '@components/NewStudentForm';
 import StudentCard from '@components/StudentCard';
 import SelectProfile from '@components/SelectProfile';
-import SelectRoute from '@components/SelectRoute'
+import SelectRoute from '@components/SelectRoute';
 
 import { initFetchData } from '@services/ApiServices';
 import { ContextType, Student, Route } from '@src/types/index';
@@ -16,7 +16,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { styled, createTheme, ThemeProvider } from '@mui/system';
-import CustomButton from '@components/CustomButton';
+import CustomButton from '@components/MUI/Button';
 
 
 export const Context = createContext<ContextType>({ students: [] });
@@ -41,6 +41,7 @@ function App () {
 
   return (
     <>
+      {/* <SelectProfile/> */}
       <SelectRoute />
       
       {/* <Context.Provider value={{ students }}>

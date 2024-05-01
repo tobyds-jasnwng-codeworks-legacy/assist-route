@@ -1,5 +1,5 @@
 import styles from './index.module.css';
-import CustomButton from '@components/CustomButton';
+import MuiSelect from '@components/MUI/Select';
 
 function SelectRoute () {
   return (
@@ -7,25 +7,20 @@ function SelectRoute () {
       <div className={styles.content}>
         <h1>please select your route</h1>
         <div className={styles.buttonContainer}>
-          <CustomButton sxCustom={sxButton} content={"driver"} />
-          <CustomButton sxCustom={sxButton} content={"rider"} />
+          <MuiSelect sxCustom={sxSelect} placeholder={'morning'} />
+          <MuiSelect sxCustom={sxSelect} placeholder={'evening'} />
         </div>
       </div>
     </div>
   );
 }
 
-const sxButton = {
+const sxSelect = {
   width: 200,
   height: 60,
   backgroundColor: '#4dabf7',
   color: '#343a40',
-  '&:hover': {
-    backgroundColor: '#4dabf7',
-    border: 2,
-    boxShadow: 0,
-    fontWeight: 600,
-  }
+  
 };
 
 export default SelectRoute;
