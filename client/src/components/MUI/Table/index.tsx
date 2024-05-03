@@ -13,12 +13,19 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
+type Contact = {
+  name: string,
+  relation: string,
+  phone: string,
+  email: string
+}
+
 function createData (
   name: string,
   age: number,
   morningStop: string,
   eveningStop: string,
-  contacts: Array<any>,
+  contacts: Array<Contact>,
 ) {
   return {
     name,
