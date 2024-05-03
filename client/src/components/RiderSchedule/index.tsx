@@ -25,8 +25,8 @@ function RiderSchedule () {
           <Schedule />
         </div>
         <div className={styles.edits}>
-          <MuiButton sxCustom={sxButton2} content={"contacts"} />
-          <MuiButton sxCustom={sxButton2} content={"contacts"} />
+          <MuiButton sxCustom={sxButton2} content={"edit"} />
+          <MuiButton sxCustom={sxButton2} content={"edit"} />
         </div>
       </div>
     </div>

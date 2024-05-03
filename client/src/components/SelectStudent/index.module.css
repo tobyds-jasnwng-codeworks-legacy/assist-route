@@ -21,6 +21,7 @@
 .buttonContainer {
  /* border: 1px red solid; */
   display: flex;
+  align-items: center;
   gap: 20px;
   height:  100px;
 }

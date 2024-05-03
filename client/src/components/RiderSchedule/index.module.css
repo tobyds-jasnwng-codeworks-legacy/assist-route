@@ -34,17 +34,18 @@
   width: 200px;
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 50px;
   justify-content: flex-end;
   align-items: center;
   height: 450px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   font-size: 24px;
 }
 
 .time {
-  height: 100px;
-  width: 120px;
+    border: 1px black solid;
+  height: 110px;
+  width: 130px;
   border-radius: 100%;
   background-color: var(--clr-background-100);
   display: flex;
@@ -74,13 +75,13 @@
 
 
 .selectedDay {
-  width: 240px;
+  width: 210px;
   height: 520px;
   background-color: var(--clr-primary-600);
-  position: absolute;
-  left: 270px;
-  top: 220px;
-  z-index: -1;
+  position: relative;
+  left: 420px;
+  top: 45px;
+  z-index: -2;
   border-radius: 50px;
   opacity: 0.5;
 
