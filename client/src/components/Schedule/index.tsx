@@ -32,19 +32,19 @@ function Schedule () {
           <h6>Stop 4</h6>
         </div>
         <div className={styles.route}>
-          <h5>Route 1</h5>
-          <h6>Stop 4</h6>
+          <h5>Route 2</h5>
+          <h6>Stop 5</h6>
         </div>
         <div className={styles.route}>
           <h5>Route 1</h5>
           <h6>Stop 4</h6>
         </div>
         <div className={styles.route}>
-          <h5>Route 1</h5>
+          <h5>Route 5</h5>
           <h6>Stop 4</h6>
         </div>
         <div className={styles.route}>
-          <h5>Route 1</h5>
+          <h5>Route 2</h5>
           <h6>Stop 4</h6>
         </div>
       </div>
@@ -58,12 +58,12 @@ function Schedule () {
           <h6>Stop 4</h6>
         </div>
         <div className={styles.route}>
-          <h5>Route 1</h5>
-          <h6>Stop 4</h6>
+          <h5>Route 2</h5>
+          <h6>Stop 1</h6>
         </div>
         <div className={styles.route}>
-          <h5>Route 1</h5>
-          <h6>Stop 4</h6>
+          <h5>Route 2</h5>
+          <h6>Stop 1</h6>
         </div>
         <div className={styles.route}>
           <h5>Route 1</h5>
